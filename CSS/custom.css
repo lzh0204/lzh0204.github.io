@@ -1,0 +1,70 @@
+/* 1. 固定背景图，不随页面滚动 */
+body {
+    background: url('/img/background.png') fixed !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+}
+
+/* 2. 主要内容区域透明效果 */
+.container, 
+.container .row,
+.content-wrap,
+#board {
+    background-color: rgba(255, 255, 255, 0.7) !important; /* 70%不透明度 */
+    backdrop-filter: blur(5px); /* 毛玻璃效果，可选 */
+    border-radius: 10px; /* 圆角，可选 */
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* 3. 文章卡片透明 */
+.post-block,
+.post-content,
+.article-container,
+.markdown-body {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* 4. 侧边栏透明 */
+.sidebar,
+.sidebar-inner,
+.widget {
+    background-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* 5. 导航栏透明 */
+.navbar,
+.navbar-collapse {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(10px);
+}
+
+/* 6. 页脚透明 */
+.footer,
+.footer-inner {
+    background-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* 7. 代码块保持不透明（可读性） */
+pre,
+code,
+.highlight,
+code[class*="language-"],
+pre[class*="language-"] {
+    background-color: #f8f9fa !important;
+    opacity: 1 !important;
+}
+
+/* 8. 移动端适配 */
+@media (max-width: 768px) {
+    .container, 
+    .content-wrap,
+    #board {
+        background-color: rgba(255, 255, 255, 0.85) !important;
+        margin: 10px;
+        padding: 15px;
+    }
+}
+

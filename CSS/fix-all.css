@@ -1,0 +1,8 @@
+/* 强制所有页面使用你的背景图 */
+.banner-img, .hero, [class*="banner"], 
+body.page-about .about-info,
+body.page-about .about-content {
+    background: url('/img/background.png') center/cover no-repeat !important;
+    padding: 50px !important;
+    min-height: 300px;
+}

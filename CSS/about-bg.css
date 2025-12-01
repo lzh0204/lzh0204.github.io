@@ -1,0 +1,13 @@
+/* 关于页面背景 */
+body[class*="about"] .banner-img,
+body[class*="about"] .hero,
+.page-about .banner-img {
+    background-image: url('/img/background.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+/* 如果还是不行，直接给body加背景 */
+body.page-about {
+    background: url('/img/background.png') fixed center/cover no-repeat !important;
+}
