@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="false" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>JavaScript进阶知识 | lllzh</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <meta name="description" content="JavaScript进阶知识1.作用域作用域（scope）规定了变量能够被访问的“范围”，离开这个“范围”变量变不能再被访问 作用域分为：全局作用域和局部作用域。其中，局部作用域又被分为函数作用域和块作用域 1.1 局部作用域 函数作用域：  在函数内部声明的变量只能在函数内部被访问，在不无法直接访问 1234567&lt;script&gt;	function getSum() &#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript进阶知识">
+<meta property="og:url" content="http://example.com/2026/02/22/JavaScript%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="lllzh">
+<meta property="og:description" content="JavaScript进阶知识1.作用域作用域（scope）规定了变量能够被访问的“范围”，离开这个“范围”变量变不能再被访问 作用域分为：全局作用域和局部作用域。其中，局部作用域又被分为函数作用域和块作用域 1.1 局部作用域 函数作用域：  在函数内部声明的变量只能在函数内部被访问，在不无法直接访问 1234567&lt;script&gt;	function getSum() &#123;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/image-20251202210033026.png">
+<meta property="og:image" content="http://example.com/img/image-20251203114118403.png">
+<meta property="og:image" content="http://example.com/img/image-20251203114302584.png">
+<meta property="og:image" content="http://example.com/img/image-20251203194850097.png">
+<meta property="og:image" content="http://example.com/img/image-20251203201433124.png">
+<meta property="og:image" content="http://example.com/img/image-20251203202517825.png">
+<meta property="og:image" content="http://example.com/img/image-20251203202720821.png">
+<meta property="og:image" content="http://example.com/img/image-20251203202846734.png">
+<meta property="og:image" content="http://example.com/img/image-20251204165923346.png">
+<meta property="og:image" content="http://example.com/img/image-20251204170725760.png">
+<meta property="og:image" content="http://example.com/img/image-20251204172831351.png">
+<meta property="og:image" content="http://example.com/img/image-20251204174953907.png">
+<meta property="og:image" content="http://example.com/img/image-20251204175145534.png">
+<meta property="og:image" content="http://example.com/img/image-20251204180515605.png">
+<meta property="og:image" content="http://example.com/img/image-20251204180758705.png">
+<meta property="og:image" content="http://example.com/img/image-20251204184711305.png">
+<meta property="og:image" content="http://example.com/img/image-20251204190033370.png">
+<meta property="og:image" content="http://example.com/img/image-20251204191123123.png">
+<meta property="og:image" content="http://example.com/img/image-20251204194641064.png">
+<meta property="og:image" content="http://example.com/img/image-20251204200000399.png">
+<meta property="og:image" content="http://example.com/img/image-20251205115159468.png">
+<meta property="og:image" content="http://example.com/img/image-20251210104727289.png">
+<meta property="og:image" content="http://example.com/img/image-20251210112643107.png">
+<meta property="og:image" content="http://example.com/img/image-20251210113251679.png">
+<meta property="og:image" content="http://example.com/img/image-20251212145008453.png">
+<meta property="og:image" content="http://example.com/img/image-20251212145841067.png">
+<meta property="og:image" content="http://example.com/img/image-20251212151124582.png">
+<meta property="og:image" content="http://example.com/img/image-20251215203259341.png">
+<meta property="og:image" content="http://example.com/img/image-20251215204440090.png">
+<meta property="og:image" content="http://example.com/img/image-20251216094049285.png">
+<meta property="og:image" content="http://example.com/img/image-20251216102421893.png">
+<meta property="og:image" content="http://example.com/img/image-20251216105344470.png">
+<meta property="article:published_time" content="2026-02-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-02-23T03:01:45.978Z">
+<meta property="article:author" content="lzh0204">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/image-20251202210033026.png">
+  
+    <link rel="alternate" href="/atom.xml" title="lllzh" type="application/atom+xml">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>lllzh </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS 订阅">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS 订阅">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">lllzh </div>
+      <div class="dot"></div>
+      <div class="subtitle">欢迎来到我的博客~~ </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://twitter.com" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://store.steampowered.com" title="Steam"><i class="fa-brands fa-steam"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">
+                前端
+                <div class="category-count">4</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-JavaScript进阶知识" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        JavaScript进阶知识
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2026-02-21T16:00:00.000Z" itemprop="datePublished">2026-02-22</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            13k 词 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="JavaScript进阶知识"><a href="#JavaScript进阶知识" class="headerlink" title="JavaScript进阶知识"></a>JavaScript进阶知识</h1><h2 id="1-作用域"><a href="#1-作用域" class="headerlink" title="1.作用域"></a>1.作用域</h2><p>作用域（scope）规定了变量能够被访问的“范围”，离开这个“范围”变量变不能再被访问</p>
+<p>作用域分为：<strong>全局作用域</strong>和<strong>局部作用域</strong>。其中，局部作用域又被分为<strong>函数作用域</strong>和<strong>块作用域</strong></p>
+<h3 id="1-1-局部作用域"><a href="#1-1-局部作用域" class="headerlink" title="1.1 局部作用域"></a>1.1 局部作用域</h3><ul>
+<li><strong>函数作用域：</strong></li>
+</ul>
+<p>在函数内部声明的变量只能在函数内部被访问，在不无法直接访问</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">getSum</span>(<span class="params"></span>) &#123;</span><br><span class="line">    	<span class="comment">//函数内部是函数作用域 是局部作用域</span></span><br><span class="line">    	<span class="keyword">const</span> num = <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(num);<span class="comment">//此处会报错，函数外部不能使用局部作用域变量</span></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>总结：</strong></p>
+<ol>
+<li>函数内部声明的变量,在函数外部无法被访问</li>
+<li>函数的参数也是函数内部的局部变量</li>
+<li>不同函数内部声明的变量无法互相访问</li>
+<li>函数执行完毕后,函数内部的变量实际被清空了</li>
+</ol>
+<ul>
+<li><strong>块作用域：</strong></li>
+</ul>
+<p>在JavaScript中使用{ }包裹的代码称为代码块，代码块内部生命的变量外部将<strong>有可能</strong>无法被访问</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">foe</span>(<span class="params"><span class="keyword">let</span> i = <span class="number">0</span>;i &lt; <span class="number">3</span>;i ++ </span>) &#123;</span><br><span class="line">    <span class="comment">//i 只能在该代码块中被访问</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(i);<span class="comment">//这里会报错</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：</p>
+<ol>
+<li><code>let</code> 声明的变量会产生块作用域,<code>var</code> 不会产生块作用域</li>
+<li><code>const</code> 声明的常量也会产生块作用域</li>
+<li>不同代码块之间的变量无法互相访问</li>
+<li>推荐使用 <code>let</code> 或 <code>const</code></li>
+</ol>
+</blockquote>
+<h3 id="1-2全局作用域"><a href="#1-2全局作用域" class="headerlink" title="1.2全局作用域"></a>1.2全局作用域</h3><p><code>&lt;script&gt;</code> 标签和 <code>js</code> 文件的最外层就是所谓的全局作用域，在此声明的变量在函数内部也能被访问。全局作用域中声明的变量，任何其他作用域都可以被访问</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	<span class="comment">//全局作用域</span></span><br><span class="line">    <span class="comment">//全局作用域下声明了num变量</span></span><br><span class="line">    <span class="keyword">const</span> num = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="comment">//函数内部可以使用全局作用域的变量</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(num);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//此处是全局作用域</span></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意:</p>
+<ol>
+<li>为 window 对象动态添加的属性默认也是全局的,不推荐! </li>
+<li>函数中未使用任何关键字声明的变量为全局变量,不推荐 </li>
+<li>尽可能少的声明全局变量,防止全局变量被污染</li>
+</ol>
+</blockquote>
+<h3 id="1-3作用域链"><a href="#1-3作用域链" class="headerlink" title="1.3作用域链"></a>1.3作用域链</h3><p>作用域链的本质就是底层的变量查找机制</p>
+<p>在函数被执行的时候，会优先查找当前函数作用域中的变量，如果当前作用域查找不到则会依次逐级查找父级作用域直到全局作用域</p>
+<p><strong>总结：</strong></p>
+<ol>
+<li>嵌套关系的作用域串联起来形成了作用域链</li>
+<li>相同作用域链中按着从小到大的规则查找变量</li>
+<li>子作用域能够访问父作用域,父级作用域无法访问子级作用域</li>
+</ol>
+<h3 id="1-4垃圾回收机制"><a href="#1-4垃圾回收机制" class="headerlink" title="1.4垃圾回收机制"></a>1.4垃圾回收机制</h3><p>垃圾回收机制（Garbage Collection） 简称 GC ，JS中内存的分配和回收都是自动完成的，内存不使用的时候会被垃圾回收器自动回收</p>
+<ul>
+<li><strong>内存的生命周期：</strong></li>
+</ul>
+<p>JS环境中分配的内存，一般有以下的生命周期：</p>
+<ol>
+<li><strong>内存分配：</strong>当我们声明变量、函数、对象的时候，系统会自动为他们分配内存</li>
+<li><strong>内存使用：</strong>读写内存，也就是使用变量、函数等</li>
+<li><strong>内存回收：</strong>使用完毕，又垃圾回收器自动回收不再使用的内存</li>
+</ol>
+<p><strong>说明：</strong></p>
+<ol>
+<li>全局变量一般不会回收（关闭页面回收）</li>
+<li>一般情况下局部变量的值，如果不用了，就会被自动回收</li>
+</ol>
+<p><strong>内存泄漏：</strong>程序中分配的内存由于某种原因程序未释放或无法释放叫内存泄漏</p>
+<h3 id="1-5闭包"><a href="#1-5闭包" class="headerlink" title="1.5闭包"></a>1.5闭包</h3><p>一个函数对周围状态的引用捆绑在一起，内层函数中访问到外层函数的作用域。简单来说就是<strong>闭包 &#x3D; 内层函数 + 外层函数的变量</strong></p>
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">outer</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">       <span class="variable language_">console</span>.<span class="title function_">log</span>(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">fn</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">outer</span>();</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/image-20251202210033026.png" alt="image-20251202210033026"></p>
+<p>它的最大用处有两个，一个是可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中</p>
+<p><strong>闭包基本格式：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">outer</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> fn</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> fun = <span class="title function_">outer</span>()</span><br><span class="line"><span class="title function_">fun</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>简约写法：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">outer</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> fun = <span class="title function_">outer</span>()</span><br><span class="line"><span class="title function_">fun</span>()</span><br></pre></td></tr></table></figure>
+
+<p>我来简单解释一下为什么这么写吧：</p>
+<p><code>return fn</code> 没有加括号 <code>()</code>，所以返回的是函数引用（可后续执行），不是 <code>fn()</code> 的执行结果。<code>const fun = outer()</code> 中，<code>outer()</code> 的执行结果是（内部函数 <code>fn</code>），因此 <code>fun</code> 成为了 <code>fn</code> 的 “别名”，二者是同一个函数的引用.<code>fn</code> 引用了外部作用域的 <code>i</code>，即便 <code>outer</code> 执行完毕后其作用域本应销毁，但由于 <code>fn</code> 被外部变量 <code>fun</code> 引用，<code>i</code> 会被闭包保存，直到 <code>fun</code> 被销毁才释放 —— 这也是 <code>fun()</code> 能正常输出 <code>i=1</code> 的原因。</p>
+<p><strong>执行<code>outer()</code> → 创建i&#x3D;1和<code>fn</code> → 返回<code>fn</code> → <code>fun</code>接收 <code>fn</code> 的引用 → 执行<code>fun()</code> → 触发 <code>fn</code> 的逻辑 → 读取闭包保存的i → 输出1</strong></p>
+<p><strong>闭包的应用：</strong></p>
+<p>实现数据的私有</p>
+<p>举个栗子：统计函数调用次数</p>
+<p><img src="/img/image-20251203114118403.png" alt="image-20251203114118403"></p>
+<p>这样虽然可以实现，但是这个<code>count</code>是全局变量，容易被修改导致污染变量</p>
+<p><img src="/img/image-20251203114302584.png" alt="image-20251203114302584"></p>
+<p>利用闭包，实现了数据的私有，不能直接修改<code>count</code></p>
+<h3 id="1-6变量提升"><a href="#1-6变量提升" class="headerlink" title="1.6变量提升"></a>1.6变量提升</h3><p>变量提升是JavaScript中比较“奇怪”的现象，他允许在变量声明之前即被访问（仅存在于<code>var</code>声明变量）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	<span class="comment">//访问变量str</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(str + <span class="string">&#x27;world!&#x27;</span>)</span><br><span class="line">	<span class="comment">//声明变量str</span></span><br><span class="line">	<span class="keyword">var</span> str = <span class="string">&#x27;hello &#x27;</span></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：</p>
+<ol>
+<li><p>变量在未声明即被访问时会报语法错误</p>
+</li>
+<li><p>变量在<code>var</code>声明之前即被访问,变量的值为 <code>undefined</code></p>
+</li>
+<li><p><code>let/const</code> 声明的变量不存在变量提升</p>
+</li>
+<li><p>变量提升出现在相同作用域当中</p>
+</li>
+<li><p>实际开发中推荐先声明再访问变量</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="2-函数进阶"><a href="#2-函数进阶" class="headerlink" title="2.函数进阶"></a>2.函数进阶</h2><h3 id="2-1函数提升"><a href="#2-1函数提升" class="headerlink" title="2.1函数提升"></a>2.1函数提升</h3><p>函数提升和变量提升比较类似，是指函数在声明之前即可被调用</p>
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//调用函数</span></span><br><span class="line"><span class="title function_">fn</span>()</span><br><span class="line"><span class="comment">//声明函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;函数提升&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>错误样例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不存在提升现象</span></span><br><span class="line"><span class="title function_">fn</span>()</span><br><span class="line"><span class="keyword">var</span> fn = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;函数表达式&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里会出现错误，因为函数提升和变量提升都是<strong>只提升声明而不提升赋值</strong></p>
+<p><strong>总结:</strong></p>
+<ol>
+<li>函数提升能够使函数的声明调用更灵活</li>
+<li>函数表达式不存在提升的现象</li>
+<li>函数提升出现在相同作用域当中</li>
+</ol>
+<h3 id="2-2函数参数"><a href="#2-2函数参数" class="headerlink" title="2.2函数参数"></a>2.2函数参数</h3><ul>
+<li><strong>动态参数：</strong></li>
+</ul>
+<p><code>arguments</code> 是函数内部内置的伪数组变量，它包含了调用函数时传入的所有实参</p>
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> sum = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i &lt; <span class="variable language_">arguments</span>.<span class="property">length</span>;i ++ ) &#123;</span><br><span class="line">        sum += <span class="variable language_">arguments</span>[i]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(sum)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用函数</span></span><br><span class="line"><span class="title function_">fn</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="/img/image-20251203194850097.png" alt="image-20251203194850097"></p>
+<p><strong>总结:</strong></p>
+<ol>
+<li><code>arguments</code> 是一个伪数组,只存在于函数中</li>
+<li><code>arguments</code> 的作用是动态获取函数的实参</li>
+<li>可以通过 <code>for</code> 循环依次得到传递过来的实参</li>
+</ol>
+<ul>
+<li><strong>剩余参数：</strong></li>
+</ul>
+<p><code>...</code> 是语法符号，置于最末函数形参之前，用于获取多余的实参，借助 <code>...</code> 获取的剩余实参，是个真数字</p>
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">...arr</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> sum = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i &lt; arr.<span class="property">length</span>;i++) &#123;</span><br><span class="line">        sum += arr[i]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(sum)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="/img/image-20251203201433124.png" alt="image-20251203201433124"></p>
+<ul>
+<li><strong>展开运算符：</strong></li>
+</ul>
+<p>既然上面讲到了剩余参数中的 <code>...</code> ,那这里再讲一下展开运算符，他也是<code>...</code> ，但不同的是剩余参数只能在函数中使用。展开运算符其实就是将一个数组展开</p>
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
+
+<p>结果是：</p>
+<p><img src="/img/image-20251203202517825.png" alt="image-20251203202517825"></p>
+<p>展开运算符的应用场景：求数组的最值、合并数组</p>
+<p>求最值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">5</span>]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Math</span>.<span class="title function_">max</span>(...arr))</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Math</span>.<span class="title function_">min</span>(...arr))</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251203202720821.png" alt="image-20251203202720821"></p>
+<p>合并数组：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> arr2 = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="keyword">const</span> arr = [...arr1,...arr2]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251203202846734.png" alt="image-20251203202846734"></p>
+<h3 id="2-3箭头函数"><a href="#2-3箭头函数" class="headerlink" title="2.3箭头函数"></a>2.3箭头函数</h3><p>引入箭头函数的目的是更简短的函数写法并且不绑定this，箭头函数的语法比韩苏表达式更简洁，更适用于本来需要匿名函数的地方</p>
+<ul>
+<li><strong>基本语法：</strong></li>
+</ul>
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;abc&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用箭头函数之后：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;abc&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>带有形参时：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = (<span class="params">x</span>) =&gt; &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(x)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果只有一个形参，那么形参外面的小括号可以省略</p>
+<p><strong>函数中只有一行代码时：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = x =&gt; <span class="variable language_">console</span>.<span class="title function_">log</span>(x)</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">fun</span> = x =&gt; x + x</span><br></pre></td></tr></table></figure>
+
+<p>如果函数中只有一行代码，那么大括号可以省略，并且不用写 <code>return</code> ，直接返回</p>
+<p><strong>总结：</strong></p>
+<ol>
+<li>箭头函数是属于表达式函数，不存在函数提升</li>
+<li>加括号的函数体返回对象字面量表达式</li>
+<li>箭头函数不能使用 <code>arguments</code> 实参，能使用剩余参数</li>
+</ol>
+<ul>
+<li><strong>箭头函数this：</strong></li>
+</ul>
+<p>在箭头函数之前，每一个函数根据他是被如何调用的来定义这个函数的 <code>this</code> 值，但是箭头函数不会创建自己的 <code>this</code> ，他只会从自己的作用域链的上一层沿用 <code>this</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line"><span class="keyword">const</span> fn = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>()</span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">	<span class="attr">name</span>:<span class="string">&#x27;lllzh&#x27;</span>,</span><br><span class="line">	<span class="attr">count</span>:<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);     </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.<span class="title function_">count</span>()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251204165923346.png" alt="image-20251204165923346"></p>
+<p><strong>箭头函数：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);     </span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>()</span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">	<span class="attr">name</span>:<span class="string">&#x27;lllzh&#x27;</span>,</span><br><span class="line">	<span class="attr">count</span>:<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.<span class="title function_">count</span>()</span><br><span class="line"><span class="keyword">const</span> arr = &#123;</span><br><span class="line">	<span class="attr">fun</span>:<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">const</span> <span class="title function_">lei</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="title function_">lei</span>()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">arr.<span class="title function_">fun</span>()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251204170725760.png" alt="image-20251204170725760"></p>
+<h2 id="3-解构赋值"><a href="#3-解构赋值" class="headerlink" title="3.解构赋值"></a>3.解构赋值</h2><p>数组解构是 <code>ES6</code> 引入的一种便捷语法，核心作用是：从数组中快速提取多个元素，并直接赋值给对应的变量，无需通过索引逐个访问和赋值</p>
+<p><strong>基本语法：</strong></p>
+<p>核心格式：<code>const [变量1, 变量2, ...] = 数组;</code> </p>
+<p>左侧的变量顺序，与右侧数组的元素顺序一一对应，自动完成赋值</p>
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> [x,y,z] = arr</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(x,y,z);</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251204172831351.png" alt="image-20251204172831351"></p>
+<ul>
+<li><strong>应用场景：</strong></li>
+</ul>
+<ol>
+<li><strong>提取部分元素</strong></li>
+</ol>
+<p>如果只需要数组中的某些元素，中间不需要的位置用<strong>空逗号</strong>占位</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = [<span class="string">&quot;苹果&quot;</span>, <span class="string">&quot;香蕉&quot;</span>, <span class="string">&quot;橙子&quot;</span>, <span class="string">&quot;葡萄&quot;</span>]</span><br><span class="line"><span class="comment">//只取第一个和第三个</span></span><br><span class="line"><span class="keyword">const</span> [f1,f3] = fruits</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(f1)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(f3)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251204174953907.png" alt="image-20251204174953907"></p>
+<p>​	2. <strong>交换变量：</strong></p>
+<p>这是解构的经典用法，无需额外定义临时变量，直接交换两个变量的值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>,b = <span class="number">2</span>;</span><br><span class="line">[a,b] = [b,a]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a,b)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251204175145534.png" alt="image-20251204175145534"></p>
+<blockquote>
+<p>注意：虽然在JavaScript中语句后面是可以省略分号的，但是这里的解构交换前面必须要有分号，不然会报错</p>
+</blockquote>
+<p>​	3. <strong>设置默认值（避免undefined）：</strong></p>
+<p>如果数组的元素个数少于变量个数，未匹配到的变量会默认是 <code>undefined</code> ，可以给变量设置默认值，防止出现 <code>undefined</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [a,b,c = <span class="number">30</span>] = [<span class="number">10</span>,<span class="number">20</span>]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a,b,c)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> [d = <span class="number">0</span>,e = <span class="number">0</span>] = []<span class="comment">//数组为空，全部使用默认值</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(d,e)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251204180515605.png" alt="image-20251204180515605"></p>
+<ol start="4">
+<li><pre><code>**剩余元素：**
+</code></pre>
+</li>
+</ol>
+<p>用 <code>...变量名</code> 可以提取数组中“未被单独匹配”的剩余元素，返回一个新的数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [a,b,...rest] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(rest)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251204180758705.png" alt="image-20251204180758705"></p>
+<h2 id="4-对象解构"><a href="#4-对象解构" class="headerlink" title="4.对象解构"></a>4.对象解构</h2><p>对象解构是 JavaScript 中一种简洁提取对象属性的语法糖，核心作用是将对象的多个属性一次性 “拆包” 并赋值给对应变量，避免重复写 <strong><code>对象.属性</code></strong> 的冗余代码</p>
+<ol>
+<li><strong>基础语法：</strong></li>
+</ol>
+<p>对象属性的值将被赋值给与属性名相同的变量，如果对象中找不到与变量名一致的属性是变量值为 <code>undefined</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="number">18</span>,</span><br><span class="line">    <span class="attr">gender</span>:<span class="string">&#x27;男&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> &#123;name,age&#125; = user</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(age)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251204184711305.png" alt="image-20251204184711305"></p>
+<p>​	2. <strong>自定义属性名（属性名和变量名不一致）：</strong></p>
+<p>如果想给提取的属性起新的变量名，用 <code>&#123;原属性名:新变量名&#125;</code> 格式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="string">&#x27;李四&#x27;</span></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> &#123;<span class="attr">name</span>:uname,<span class="attr">age</span>:uage&#125; = user <span class="comment">//这里如果不自定义属性名，就会和全局变量name冲突导致报错</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(uname) <span class="comment">// 输出：张三</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(uage) <span class="comment">// 输出：18</span></span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251204190033370.png" alt="image-20251204190033370"></p>
+<ol start="3">
+<li><strong>多级对象解构：</strong></li>
+</ol>
+<p>如果对象包含嵌套对象，可通过嵌套 <code>&#123;&#125;</code> 直接提取深层属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">    <span class="attr">address</span>:&#123;</span><br><span class="line">        <span class="attr">province</span>:<span class="string">&#x27;广东&#x27;</span>,</span><br><span class="line">        <span class="attr">city</span>:<span class="string">&#x27;深圳&#x27;</span></span><br><span class="line">    &#125; <span class="comment">//嵌套对象</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> &#123;name,<span class="attr">address</span>:&#123;city&#125;&#125; = user</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(city)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251204191123123.png" alt="image-20251204191123123"></p>
+<ul>
+<li><strong>应用场景：</strong></li>
+</ul>
+<ol>
+<li><strong>解构时忽略不需要的属性：</strong></li>
+</ol>
+<p>只提取需要的属性，多余的属性可以直接忽略</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="number">18</span>,</span><br><span class="line">    <span class="attr">hobby</span>:<span class="string">&#x27;篮球&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//只提取name和hobby</span></span><br><span class="line"><span class="keyword">const</span> &#123;name,hobby&#125; = user</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(hobby)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251204194641064.png" alt="image-20251204194641064"></p>
+<ol start="2">
+<li><strong>函数参数解构：</strong></li>
+</ol>
+<p>接收对象类型的参数时，直接解构提取需要的属性，无需在函数内写 <code>参数.属性:</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">printUser</span>(<span class="params">&#123;name,age,gender = <span class="string">&#x27;未知&#x27;</span>&#125;</span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`姓名：<span class="subst">$&#123;name&#125;</span>,年龄：<span class="subst">$&#123;age&#125;</span>,性别：<span class="subst">$&#123;gender&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">printUser</span>(&#123;<span class="attr">name</span>:<span class="string">&#x27;张三&#x27;</span>, <span class="attr">age</span>:<span class="number">28</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251204200000399.png" alt="image-20251204200000399"></p>
+<h2 id="5-对象扩展"><a href="#5-对象扩展" class="headerlink" title="5.对象扩展"></a>5.对象扩展</h2><h3 id="5-1构造函数"><a href="#5-1构造函数" class="headerlink" title="5.1构造函数"></a>5.1构造函数</h3><p>在 JavaScript 中，构造函数是一种专门用于创建和初始化对象的特殊函数，它的核心作用是批量生成结构一致、属性 &#x2F; 方法共享的对象实例</p>
+<p>举个简单的栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name,age</span>) &#123;</span><br><span class="line">    <span class="comment">//this指向新创建的实例</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name <span class="comment">//给实例绑定属性</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">sayHi</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Hi,我是<span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>,<span class="subst">$&#123;<span class="variable language_">this</span>.age&#125;</span>岁`</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//用new关键字创建实例</span></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;张三&#x27;</span>,<span class="number">20</span>)</span><br><span class="line"><span class="keyword">const</span> p2 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;李四&#x27;</span>,<span class="number">18</span>)</span><br><span class="line">p1.<span class="title function_">sayHi</span>()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251205115159468.png" alt="image-20251205115159468"></p>
+<p><strong>语法特征：</strong></p>
+<ul>
+<li>首字母必须大写（ <code>Person</code> 等），目的是区分普通函数</li>
+<li>必须用 <code>new</code> 关键字调用（不然就是普通函数，<code>this</code> 指向会出错）</li>
+<li>通过 <code>this</code> 指向当前正在创建的实例，给实例绑定属性或方法</li>
+<li>不用手动添加 <code>return</code></li>
+</ul>
+<p><strong>构造函数的底层执行流程（new关键字的作用）：</strong></p>
+<p>当你执行 <code>new Person(&#39;张三&#39;,20)</code> 的时候，JavaScript 会自动完成4件事：</p>
+<ol>
+<li><strong>创建空对象：</strong>生成一个全新的空对象</li>
+<li><strong>绑定原型：</strong>让这个空对象的隐式原型指向构造函数的显示原型</li>
+<li><strong>绑定this：</strong>将构造函数的 <code>this</code> 只想这个空对象，执行构造函数内部逻辑（给空对象添加属性、方法）</li>
+<li><strong>返回实例：</strong>若构造函数没有返回对象，则自动返回第一步创建空对象</li>
+</ol>
+<h3 id="5-2实例成员和静态成员"><a href="#5-2实例成员和静态成员" class="headerlink" title="5.2实例成员和静态成员"></a>5.2实例成员和静态成员</h3><p>在 JavaScript 中，实例成员和静态成员是基于是否与对象实例绑定划分的类 &#x2F; 构造函数成员，核心区别在于：实例成员属于单个对象实例，静态成员属于类（构造函数本身）</p>
+<ul>
+<li><strong>实例成员：</strong></li>
+</ul>
+<p>实例成员是绑定到类的具体实例对象上的属性或方法，每个实例独立拥有一份，修改一个实例的成员不会影响其他实例</p>
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name,age</span>) &#123;</span><br><span class="line">    <span class="comment">//实例属性</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age</span><br><span class="line">    <span class="comment">//实例方法（每个实力独立拥有，不推荐，浪费内存）</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">sayHi</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`hi,我是<span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>`</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//原型上的实例方法（所有实例共享，推荐）</span></span><br><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">greet</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`hello,我<span class="subst">$&#123;<span class="variable language_">this</span>.age&#125;</span>岁`</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建实例</span></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;张三&#x27;</span>,<span class="number">20</span>)</span><br><span class="line"><span class="keyword">const</span> p2 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;李四&#x27;</span>,<span class="number">25</span>)</span><br><span class="line"><span class="comment">//访问实例成员（必须通过实例访问）</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1.<span class="property">name</span>)</span><br><span class="line">p1.<span class="title function_">sayHi</span>()</span><br><span class="line">p2.<span class="property">greet</span></span><br><span class="line"><span class="comment">//修改p1实例属性，不影响p2</span></span><br><span class="line">p1.<span class="property">age</span> = <span class="number">21</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1.<span class="property">age</span>) <span class="comment">//21</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p2.<span class="property">age</span>) <span class="comment">//25</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>核心特点：</strong></p>
+<ol>
+<li>必须通过实例<strong>对象</strong>访问（不能通过类或构造函数直接访问）</li>
+<li>每个实例的独立属性是独立副本，修改互不影响</li>
+<li>原型上的实例方法被所有实例共享，节省内存</li>
+</ol>
+<ul>
+<li><strong>静态成员：</strong></li>
+</ul>
+<p>静态成员是绑定到类（构造函数本身） 上的属性或方法，不属于任何实例，所有实例共享同一份（本质是类 &#x2F; 构造函数的自身属性 &#x2F; 方法）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//静态属性(绑定到 Person 构造函数)</span></span><br><span class="line"><span class="title class_">Person</span>.<span class="property">species</span> = <span class="string">&#x27;人&#x27;</span>;</span><br><span class="line"><span class="comment">//静态方法（绑定到 Person 构造函数）</span></span><br><span class="line"><span class="title class_">Person</span>.<span class="property">creatAdult</span> = <span class="keyword">function</span>(<span class="params">name</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Person</span>(name,<span class="number">18</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//访问静态成员（通过构造函数访问，实力不可访问）</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Person</span>.<span class="property">species</span>); <span class="comment">//人</span></span><br><span class="line"><span class="keyword">const</span> p3 = <span class="title class_">Person</span>.<span class="title function_">creatAdult</span>(<span class="string">&#x27;王五&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p3.<span class="property">name</span>); <span class="comment">//王五</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//实例无法访问静态成员</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p3.<span class="property">species</span>); <span class="comment">//undefined</span></span><br><span class="line">p3.<span class="title function_">creatAdult</span>(); <span class="comment">//报错</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>核心特点：</strong></p>
+<ol>
+<li>必须通过类名或构造函数名访问</li>
+<li>全局唯一，所有实例共享同一份（修改静态属性会影响所有访问者）</li>
+</ol>
+<h2 id="6-内置构造函数"><a href="#6-内置构造函数" class="headerlink" title="6.内置构造函数"></a>6.内置构造函数</h2><p>在 JavaScript 中，<strong>内置构造函数</strong>是语言原生提供的、用于创建特定类型数据的构造函数（通过 <code>new</code> 调用）</p>
+<h3 id="6-1-Object-——-对象构造函数"><a href="#6-1-Object-——-对象构造函数" class="headerlink" title="6.1 Object() —— 对象构造函数"></a>6.1 Object() —— 对象构造函数</h3><p>作用：创建普通对象（字面量 {} 是语法糖，等价于 <code>new Object()</code> ）</p>
+<p>静态方法：<code>Object.keys()</code>、<code>Object.values()</code>、<code>Object.assign()</code>、<code>Object.is()</code> 等；</p>
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建对象（两种方式等价，有限字面量）</span></span><br><span class="line"><span class="keyword">const</span> obj1 = <span class="keyword">new</span> <span class="title class_">Object</span>(&#123;<span class="attr">name</span>:<span class="string">&#x27;张三&#x27;</span>&#125;);</span><br><span class="line"><span class="keyword">const</span> obj2 = &#123;<span class="attr">name</span>:<span class="string">&#x27;李四&#x27;</span>,<span class="attr">age</span>:<span class="number">18</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//静态方法</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">keys</span>(obj1));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">values</span>(obj2));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">assign</span>(obj1,&#123;<span class="attr">age</span>:<span class="number">20</span>&#125;));</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251210104727289.png" alt="image-20251210104727289"></p>
+<h3 id="6-2-Array-——-数组构造函数"><a href="#6-2-Array-——-数组构造函数" class="headerlink" title="6.2 Array() —— 数组构造函数"></a>6.2 Array() —— 数组构造函数</h3><p>作用：创建数组（字面量 [] 是语法糖，等价于 <code>new Array()</code>）</p>
+<p>注意：<code>new Array(n)</code> 若传入单个数字，会创建长度为n的空数组</p>
+<p>常用方法：</p>
+<ol>
+<li><strong>forEach()：</strong>遍历数组，不返回数组，经常用于查找遍历数组元素</li>
+<li><strong>filter()：</strong>过滤数组，返回新数组，返回的是筛选满足条件的数组元素</li>
+<li><strong>map()：</strong>迭代数组，返回新数组，返回的是处理之后的数组元素，想要使用返回的新数组</li>
+<li><strong>reduce()：</strong>累计器，返回累计处理的结果，经常用于求和等</li>
+</ol>
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//reduce():</span></span><br><span class="line"><span class="comment">//基础语法：arr.reduce(function(上一次值，当前值)&#123;&#125;,初始值)，这里的初始值可有可无</span></span><br><span class="line"><span class="keyword">const</span> arr1 = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">8</span>];</span><br><span class="line"><span class="keyword">const</span> sum = arr.<span class="title function_">reduce</span>(<span class="function">(<span class="params">prev,current</span>) =&gt;</span> prev + current , <span class="number">10</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(sum);</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251210112643107.png" alt="image-20251210112643107"></p>
+<p><strong>reduce执行过程：</strong></p>
+<ol>
+<li>如果没有新的起始值，则上一次值以数组的第一个数组元素的值</li>
+<li>每一次循环，把返回值给作为下一次循环的上一次值</li>
+<li>如果有起始值，则起始值作为上一次值（如果是对象数组，那么必须要有起始值，0）</li>
+</ol>
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [&#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">      <span class="attr">salary</span>: <span class="number">10000</span></span><br><span class="line">    &#125;, &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;李四&#x27;</span>,</span><br><span class="line">      <span class="attr">salary</span>: <span class="number">10000</span></span><br><span class="line">    &#125;, &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;王五&#x27;</span>,</span><br><span class="line">      <span class="attr">salary</span>: <span class="number">20000</span></span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> total = arr.<span class="title function_">reduce</span>(<span class="function">(<span class="params">prev,current</span>) =&gt;</span> prev + current.<span class="property">salary</span> , <span class="number">0</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(total);</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251210113251679.png" alt="image-20251210113251679"></p>
+<p><strong>其他的常用方法：</strong></p>
+<ol>
+<li>实例方法 <code>find</code> ：查找元素，返回符合测试条件的第一个数组元素值，如果没有符合条件的则返回 <code>undefined</code></li>
+<li>实例方法 <code>every</code> ：检测数组所有元素是否都符合指定条件，如果所有元素都通过检测返回 <code>true</code> ，否则返回 <code>false</code></li>
+</ol>
+<p><strong>find:</strong></p>
+<p>语法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">find</span>(callbackFn)</span><br><span class="line"><span class="title function_">find</span>(callbackFn,thisArg)</span><br></pre></td></tr></table></figure>
+
+<p><code>callbackFn</code> ：为数组中的每个元素执行的函数，他应该返回一个真值来表示已经找到了匹配的元素，该函数被调用时将传入以下参数：</p>
+<p>​	<code>element</code>：数组中当前正在处理的元素</p>
+<p>​	<code>index</code>：正在处理的元素在数组中的索引</p>
+<p>​	<code>array</code>：调用了 <code>find()</code> 的数组本身</p>
+<p><code>thisAry</code> （可选）：执行了 <code>callbackFn</code> 时用作 <code>this</code> 的值</p>
+<p>举个简单的栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="string">&#x27;red&#x27;</span>,<span class="string">&#x27;pink&#x27;</span>,<span class="string">&#x27;yellow&#x27;</span>];</span><br><span class="line"><span class="keyword">const</span> re = arr.<span class="title function_">find</span>(<span class="keyword">function</span>(<span class="params">item</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> item === <span class="string">&#x27;pink&#x27;</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(re);</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251212145008453.png" alt="image-20251212145008453"></p>
+<p>再举个常用栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">name</span>:<span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">        <span class="attr">age</span>:<span class="number">18</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">name</span>:<span class="string">&#x27;李四&#x27;</span>,</span><br><span class="line">        <span class="attr">age</span>:<span class="number">20</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> re = arr.<span class="title function_">find</span>(<span class="function"><span class="params">item</span> =&gt;</span> item.<span class="property">name</span> === <span class="string">&#x27;李四&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(re)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251212145841067.png" alt="image-20251212145841067"></p>
+<p><strong>every：</strong></p>
+<p>语法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">find</span>(callbackFn)</span><br><span class="line"><span class="title function_">find</span>(callbackFn,thisArg)</span><br></pre></td></tr></table></figure>
+
+<p>举个简单栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">10</span>,<span class="number">12</span>,<span class="number">30</span>];</span><br><span class="line"><span class="keyword">const</span> res = arr.<span class="title function_">every</span>(<span class="function"><span class="params">item</span> =&gt;</span> item &gt;= <span class="number">10</span>)</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251212151124582.png" alt="image-20251212151124582"></p>
+<h3 id="6-3-string-——-字符串构造函数"><a href="#6-3-string-——-字符串构造函数" class="headerlink" title="6.3 string() —— 字符串构造函数"></a>6.3 string() —— 字符串构造函数</h3><p>在JavaScript 中字符串有两种形态：原始字符串（string 字面量）和 <code>String</code> 构造函数创建的包装对象，下面来讲一下构造函数的用法</p>
+<p><strong>原型方法：</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>基础操作</td>
+<td>length（属性）</td>
+<td>获取字符串长度（原始字符串也可直接访问）</td>
+</tr>
+<tr>
+<td></td>
+<td>charAt(index)</td>
+<td>获取指定索引的字符（等价于 <code>str[index]</code>，但 index 越界返回 “”）</td>
+</tr>
+<tr>
+<td></td>
+<td>charCodeAt(index)</td>
+<td>获取指定索引字符的 Unicode 编码（数字）</td>
+</tr>
+<tr>
+<td>查找&#x2F;匹配</td>
+<td>indexOf(search)</td>
+<td>查找子串首次出现的索引，未找到返回 <code>-1</code></td>
+</tr>
+<tr>
+<td></td>
+<td>includes(search)</td>
+<td>判断是否包含子串（返回布尔值）</td>
+</tr>
+<tr>
+<td></td>
+<td>startsWith(search)</td>
+<td>判断是否以指定子串开头</td>
+</tr>
+<tr>
+<td></td>
+<td>endsWith(search)</td>
+<td>判断是否以指定子串结尾</td>
+</tr>
+<tr>
+<td></td>
+<td>match(regex)</td>
+<td>匹配正则表达式，返回匹配结果数组（无匹配返回 null）</td>
+</tr>
+<tr>
+<td>截取&#x2F;代替</td>
+<td>slice(start, end)</td>
+<td>截取子串（支持负索引，end 为结束索引前一位）</td>
+</tr>
+<tr>
+<td></td>
+<td>substring(start, end)</td>
+<td>截取子串（不支持负索引，start&#x2F;end 自动取正且小值在前）</td>
+</tr>
+<tr>
+<td></td>
+<td>replace(search, replace)</td>
+<td>替换子串 &#x2F; 正则匹配的内容（默认只替换第一个）</td>
+</tr>
+<tr>
+<td>转换&#x2F;分割</td>
+<td>toUpperCase()</td>
+<td>转为大写</td>
+</tr>
+<tr>
+<td></td>
+<td>toLowerCase()</td>
+<td>转为小写</td>
+</tr>
+<tr>
+<td></td>
+<td>split(separator)</td>
+<td>按分隔符分割字符串为数组</td>
+</tr>
+<tr>
+<td>去除空白</td>
+<td>trim()</td>
+<td>去除首尾空白（ES5）</td>
+</tr>
+<tr>
+<td></td>
+<td>trimStart()<code>/</code>trimLeft()</td>
+<td>去除开头空白</td>
+</tr>
+</tbody></table>
+<p>下面我就重点讲一下 <code>substring()</code> 、 <code>startsWith()</code> 吧</p>
+<p><strong>substring()：</strong></p>
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//语法：</span></span><br><span class="line">str.<span class="title function_">substring</span>(初始值，终止值)</span><br><span class="line"><span class="comment">//如果没有终止值，默认截取到最后</span></span><br><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;我喜欢打篮球&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">substring</span>(<span class="number">4</span>));</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251215203259341.png" alt="image-20251215203259341"></p>
+<p><strong>startsWith()：</strong></p>
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//语法：</span></span><br><span class="line">str.<span class="title function_">startsWith</span>(searchstring,position)</span><br><span class="line"><span class="comment">//position 默认为 0</span></span><br><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;我喜欢打篮球&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">startsWith</span>(<span class="string">&#x27;我&#x27;</span>))</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">startsWith</span>(<span class="string">&#x27;喜欢&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251215204440090.png" alt="image-20251215204440090"></p>
+<h2 id="7-原型"><a href="#7-原型" class="headerlink" title="7.原型"></a>7.原型</h2><p>在 JavaScript 中，原型（Prototype）是每个对象（除 <code>null</code>&#x2F;<code>undefined</code> 外）在创建时自动关联的一个「父对象」，是 JS 实现属性 &#x2F; 方法继承、复用的核心机制</p>
+<h3 id="7-1原型对象"><a href="#7-1原型对象" class="headerlink" title="7.1原型对象"></a>7.1原型对象</h3><p>在JavaScript中，每一个构造函数都有一个 <code>prototype</code> 属性，指向一个对象，所以我么也称之为原型对象</p>
+<ul>
+<li>构造函数通过原型分配的函数时所有对象所共享的</li>
+<li>我们可以把那些不变的方法，直接定义到 <code>prototype</code> 对象上，这样所有对象的实例就可以共享这些方法</li>
+<li>构造函数和原型对象中的 <code>this</code> 都指向 实例化对象</li>
+</ul>
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sayHi</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Hi,我是<span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;张三&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> p2 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;李四&#x27;</span>);</span><br><span class="line">p1.<span class="title function_">sayHi</span>();</span><br><span class="line">p2.<span class="title function_">sayHi</span>();</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251216094049285.png" alt="image-20251216094049285"></p>
+<h2 id="8-Promise"><a href="#8-Promise" class="headerlink" title="8. Promise"></a>8. Promise</h2><p>在讲 <code>Promise</code> 之前，先说一下什么是异步编程吧</p>
+<p>异步编程是一种非阻塞的编程范式，核心是让程序在执行耗时操作（如网络请求、文件读写、数据库查询）时，不等待该操作完成，而是继续执行后续代码；当耗时操作完成后，再通过特定机制（如回调、Promise、async&#x2F;await）处理其结果</p>
+<p>简单来说就是：</p>
+<ul>
+<li><strong>同步编程</strong>：代码按顺序执行，前一步完成才能执行后一步（“排队等”）</li>
+<li><strong>异步编程</strong>：耗时操作 “后台执行”，主线程不阻塞，结果就绪后再回调（“先干别的，完事叫你”）</li>
+</ul>
+<p>异步编程的核心价值是：提升程序的并发能力和响应性，充分利用 CPU 资源，避免因耗时 IO 操作浪费时间</p>
+<p>那么异步编程的常见实现方式有：</p>
+<ol>
+<li><strong>回调函数（最基础）</strong></li>
+</ol>
+<p>将处理结果的逻辑封装成函数，作为参数传入异步操作，操作完成后调用该函数</p>
+<p>举个简单的栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getUserData</span>(<span class="params">callback</span>) &#123;</span><br><span class="line">    <span class="comment">// 模拟1秒后发起请求</span></span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> isSuccess = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(isSuccess) &#123;</span><br><span class="line">            <span class="title function_">callback</span>(<span class="literal">null</span>,&#123;<span class="attr">name</span>:<span class="string">&#x27;张三&#x27;</span>,<span class="attr">age</span>:<span class="number">18</span>&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="title function_">callback</span>(<span class="string">&#x27;请求失败&#x27;</span>,<span class="literal">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,<span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用（传入回调函数）</span></span><br><span class="line"><span class="title function_">getUserData</span>(<span class="function">(<span class="params">err,data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(err) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;回调失败&#x27;</span>,err);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;回调成功&#x27;</span>,data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251216102421893.png" alt="image-20251216102421893"></p>
+<p><strong>问题：</strong>多层回调嵌套会导致“回调地狱”，代码可读性差</p>
+<pre><code>2. **Promise（解决回调地狱）**
+</code></pre>
+<p><code>Promise</code> 的出现主要是解决回调地狱的问题，用法 <code>Promise</code> 封装异步操作，通过 <code>resolve</code> 传递成功结果，<code>reject</code> 传递失败信息，用 <code>then / catch</code> 处理结果</p>
+<p>同样是上面的栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getUserDataPromise</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 返回 Promise 对象</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> isSuccess = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span>(isSuccess) &#123;</span><br><span class="line">                <span class="title function_">resolve</span>(&#123;<span class="attr">name</span>:<span class="string">&#x27;张三&#x27;</span>,<span class="attr">age</span>:<span class="number">18</span>&#125;); <span class="comment">// 成功，调用resolve</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="title function_">reject</span>(<span class="string">&#x27;请求失败&#x27;</span>); <span class="comment">// 失败，调用reject</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,<span class="number">1000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用（then处理成功，catch处理失败）</span></span><br><span class="line"><span class="title function_">getUserDataPromise</span>()</span><br><span class="line">    .<span class="title function_">then</span>(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;成功&#x27;</span>,data);</span><br><span class="line">    &#125;)</span><br><span class="line">    .<span class="title function_">catch</span>(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;失败&#x27;</span>,err);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/img/image-20251216105344470.png" alt="image-20251216105344470"></p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/2026/02/22/BOM%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/"
+      title="BOM的简单学习"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        BOM的简单学习
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right  disabled "
+     >
+
+    <p class="title-text">
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2026 lllzh<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>

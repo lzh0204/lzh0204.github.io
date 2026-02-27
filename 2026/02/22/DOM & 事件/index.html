@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="false" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>DOM &amp; 事件 | lllzh</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <meta name="description" content="DOM &amp; 事件1.声明变量const优先原因：  const语义化更好 很多变量我们声明的时候会知道他不会被更改了，那为什么不用const呢？ 实际开发中也是，比如react框架，基本const   建议：有了变量先给const，如果后面发现他是要被修改的，再改为let  2.DOM概述DOM（Document Object Model ——文档对象模型）是浏览器提供的一套专门用来操作网">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM &amp; 事件">
+<meta property="og:url" content="http://example.com/2026/02/22/DOM%20&%20%E4%BA%8B%E4%BB%B6/index.html">
+<meta property="og:site_name" content="lllzh">
+<meta property="og:description" content="DOM &amp; 事件1.声明变量const优先原因：  const语义化更好 很多变量我们声明的时候会知道他不会被更改了，那为什么不用const呢？ 实际开发中也是，比如react框架，基本const   建议：有了变量先给const，如果后面发现他是要被修改的，再改为let  2.DOM概述DOM（Document Object Model ——文档对象模型）是浏览器提供的一套专门用来操作网">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/image26.png">
+<meta property="og:image" content="http://example.com/img/image27.png">
+<meta property="og:image" content="http://example.com/img/image28.png">
+<meta property="og:image" content="http://example.com/img/image29.png">
+<meta property="og:image" content="http://example.com/img/image30.png">
+<meta property="og:image" content="http://example.com/img/image31.png">
+<meta property="og:image" content="http://example.com/img/image32.png">
+<meta property="og:image" content="http://example.com/img/image33.png">
+<meta property="og:image" content="http://example.com/img/image34.png">
+<meta property="og:image" content="http://example.com/img/image35.png">
+<meta property="og:image" content="http://example.com/img/image36.png">
+<meta property="og:image" content="http://example.com/img/image37.png">
+<meta property="og:image" content="http://example.com/img/image38.png">
+<meta property="og:image" content="http://example.com/img/image39.png">
+<meta property="og:image" content="http://example.com/img/image40.png">
+<meta property="og:image" content="http://example.com/img/image41.png">
+<meta property="og:image" content="http://example.com/img/image42.png">
+<meta property="og:image" content="http://example.com/img/image43.png">
+<meta property="og:image" content="http://example.com/img/image44.png">
+<meta property="og:image" content="http://example.com/img/image45.png">
+<meta property="og:image" content="http://example.com/img/image46.png">
+<meta property="og:image" content="http://example.com/img/image47.png">
+<meta property="og:image" content="http://example.com/img/image48.png">
+<meta property="article:published_time" content="2026-02-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-02-24T07:29:51.209Z">
+<meta property="article:author" content="lzh0204">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/image26.png">
+  
+    <link rel="alternate" href="/atom.xml" title="lllzh" type="application/atom+xml">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>lllzh </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS 订阅">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS 订阅">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">lllzh </div>
+      <div class="dot"></div>
+      <div class="subtitle">欢迎来到我的博客~~ </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://twitter.com" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://store.steampowered.com" title="Steam"><i class="fa-brands fa-steam"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">
+                前端
+                <div class="category-count">4</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-DOM &amp; 事件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        DOM &amp; 事件
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2026-02-21T16:00:00.000Z" itemprop="datePublished">2026-02-22</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            12k 词 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="DOM-事件"><a href="#DOM-事件" class="headerlink" title="DOM &amp; 事件"></a>DOM &amp; 事件</h1><h2 id="1-声明变量const优先"><a href="#1-声明变量const优先" class="headerlink" title="1.声明变量const优先"></a>1.声明变量const优先</h2><p><strong>原因：</strong></p>
+<ul>
+<li><code>const</code>语义化更好</li>
+<li>很多变量我们声明的时候会知道他不会被更改了，那为什么不用<code>const</code>呢？</li>
+<li>实际开发中也是，比如react框架，基本<code>const</code></li>
+</ul>
+<blockquote>
+<p>建议：有了变量先给const，如果后面发现他是要被修改的，再改为let</p>
+</blockquote>
+<h2 id="2-DOM概述"><a href="#2-DOM概述" class="headerlink" title="2.DOM概述"></a>2.DOM概述</h2><p>DOM（Document Object Model ——文档对象模型）是浏览器提供的一套专门用来<strong>操作网页内容</strong>的功能</p>
+<p>作用：开发网页内容特效和实现用户交互</p>
+<h3 id="2-1DOM树"><a href="#2-1DOM树" class="headerlink" title="2.1DOM树"></a>2.1DOM树</h3><p>DOM树是什么：</p>
+<ul>
+<li>将HTML文档以树状结构直观的变现出来，我们称之为文档树或DOM树</li>
+<li>描述网页内容关系的名词</li>
+<li>作用：文档树直观的体现了标签与标签之间的关系</li>
+</ul>
+<p><img src="/img/image26.png"></p>
+<h3 id="2-2DOM对象"><a href="#2-2DOM对象" class="headerlink" title="2.2DOM对象"></a>2.2DOM对象</h3><p><strong>概念：</strong>浏览器根据HTML标签生成的JS对象</p>
+<ul>
+<li>所有的标签属性都可以在这个对象上找到</li>
+<li>修改这个对象的属性会自动映射到标签身上</li>
+</ul>
+<blockquote>
+<p>在HTML中是标签，而在js中是DOM对象</p>
+</blockquote>
+<p><strong>核心思想：</strong>把网页内容当成<strong>对象</strong>来处理</p>
+<p><strong>document 对象：</strong></p>
+<ul>
+<li>是DOM里提供的一个对象</li>
+<li>所以它提供的属性和方法都是用来访问和操作网页内容的</li>
+<li>页面所有内容都在document里面</li>
+</ul>
+<h2 id="3-获取DOM元素"><a href="#3-获取DOM元素" class="headerlink" title="3.获取DOM元素"></a>3.获取DOM元素</h2><p>查找元素DOM元素就是利用JS选择页面中的标签元素</p>
+<ul>
+<li><strong>根据CSS选择器来获取DOM元素</strong></li>
+</ul>
+<p><strong>选择匹配的第一个元素</strong></p>
+<p>语法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;css选择器&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>参数：包含一个或多个有效的CSS选择器 （字符串）</p>
+<p>返回值：CSS选择器匹配的第一个元素，一个<code>HTMLElement</code>对象，如果没有匹配到，则返回<code>null</code></p>
+<p><strong>选择匹配的多个元素</strong></p>
+<p>语法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;css选择器&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>参数：包含一个或多个有效的CSS选择器（字符串）</p>
+<p>返回值：CSS选择器匹配的NodeList 对象集合</p>
+<blockquote>
+<p>注意：这样得到的是一个<strong>伪数组</strong></p>
+<ul>
+<li>有长度有索引号的数组</li>
+<li>但是没有pop()、push()等数组方法</li>
+</ul>
+<p>想要得到里面的每一个对象，则需要遍历（for）的方式获得</p>
+<p>哪怕只有一个元素，通过querySelectorAll()获取过来的也是一个伪数组，里面只有一个元素而已</p>
+</blockquote>
+<ul>
+<li><strong>根据元素id获取DOM元素</strong></li>
+</ul>
+<p>语法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="property">getElementById</span></span><br></pre></td></tr></table></figure>
+
+<p>例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!<span class="variable constant_">DOCTYPE</span> html&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;btn&quot;</span>&gt;</span>我是按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="comment">&lt;!-- 在这里写JavaScript代码，因为JavaScript是由上到下执行的 --&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">var</span> btn = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;btn&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="variable language_">console</span>.<span class="title function_">log</span>(btn);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>根据标签名来获取DOM元素</strong></li>
+</ul>
+<p>语法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="property">getElementsByTagName</span></span><br></pre></td></tr></table></figure>
+
+<p>例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!<span class="variable constant_">DOCTYPE</span> html&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">button</span>&gt;</span>我是按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="comment">&lt;!-- 在这里写JavaScript代码，因为JavaScript是由上到下执行的 --&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">var</span> btn = <span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;button&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="variable language_">console</span>.<span class="title function_">log</span>(btn);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>根据类名来获取DOM元素</strong></li>
+</ul>
+<p>语法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="property">getElementsByClassName</span></span><br></pre></td></tr></table></figure>
+
+<p>例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!<span class="variable constant_">DOCTYPE</span> html&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;btn&quot;</span>&gt;</span>我是按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="comment">&lt;!-- 在这里写JavaScript代码，因为JavaScript是由上到下执行的 --&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">var</span> btn = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;btn&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="variable language_">console</span>.<span class="title function_">log</span>(btn);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-DOM操作元素内容"><a href="#4-DOM操作元素内容" class="headerlink" title="4.DOM操作元素内容"></a>4.DOM操作元素内容</h2><ul>
+<li>DOM对象都是根据标签生成的，所以操作标签，本质上就是操作DOM对象</li>
+<li>就是操作对象的点语法</li>
+<li>如果想要修改标签元素里面的内容，可以通过<code>对象.innerText属性</code> 或 <code>对象.innerHTML属性</code></li>
+</ul>
+<blockquote>
+<p>对象.innerText属性 或 对象.innerHTML属性本质就是获取HTML的<strong>值</strong></p>
+</blockquote>
+<h3 id="4-1元素-innerText属性"><a href="#4-1元素-innerText属性" class="headerlink" title="4.1元素.innerText属性"></a>4.1元素.innerText属性</h3><p>将文本内容添加&#x2F;更新到任意标签位置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>这是一个文本内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">const</span> box = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.box&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="variable language_">console</span>.<span class="title function_">log</span>(box.<span class="property">innerText</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        box.<span class="property">innerText</span> = <span class="string">&#x27;我是一个盒子&#x27;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="/img/image27.png"></p>
+<p>如果给修改内容中加上HTML属性，会是什么样呢？</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>这是一个文本内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">const</span> box = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.box&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="variable language_">console</span>.<span class="title function_">log</span>(box.<span class="property">innerText</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        box.<span class="property">innerText</span> = <span class="string">&#x27;&lt;strong&gt;我是一个盒子&lt;/strong&gt;&#x27;</span>;     </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="/img/image28.png"></p>
+<p>这里的文本内容并没有加粗，而是<strong></strong>被打印了出来，所以，<strong>该属性只打印纯文本，不解析标签</strong></p>
+<h3 id="4-2元素innerHTML属性"><a href="#4-2元素innerHTML属性" class="headerlink" title="4.2元素innerHTML属性"></a>4.2元素innerHTML属性</h3><p>将文本内容添加&#x2F;更新到任意标签位置，并且<strong>会解析标签</strong>，多标签建议使用模板字符，但是得不到表单元素</p>
+<p>这里我们还以上面那个例子为例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>这是一个文本内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">const</span> box = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.box&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="variable language_">console</span>.<span class="title function_">log</span>(box.<span class="property">innerText</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        box.<span class="property">innerText</span> = <span class="string">&#x27;&lt;strong&gt;我是一个盒子&lt;/strong&gt;&#x27;</span>;     </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="/img/image29.png"></p>
+<h2 id="5-DOM操作元素属性"><a href="#5-DOM操作元素属性" class="headerlink" title="5.DOM操作元素属性"></a>5.DOM操作元素属性</h2><h3 id="5-1操作元素常用属性"><a href="#5-1操作元素常用属性" class="headerlink" title="5.1操作元素常用属性"></a>5.1操作元素常用属性</h3><ul>
+<li>还可以通过JS设置&#x2F;修改标签元素属性，比如通过src更换图片</li>
+<li>最常见的属性比如：href、title、src</li>
+<li>语法：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对象.属性 = 值</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2操作元素样式属性"><a href="#5-2操作元素样式属性" class="headerlink" title="5.2操作元素样式属性"></a>5.2操作元素样式属性</h3><ul>
+<li><strong>通过<code>style</code>属性操作CSS</strong></li>
+</ul>
+<p>语法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对象.<span class="property">style</span>.样式属性 = 值</span><br></pre></td></tr></table></figure>
+
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">        .<span class="property">box</span> &#123;</span><br><span class="line">            <span class="attr">width</span>: 30px;</span><br><span class="line">            <span class="attr">height</span>: 30px;</span><br><span class="line">            background-<span class="attr">color</span>: pink;</span><br><span class="line">        &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="comment">//获取元素</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">const</span> box = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.box&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="comment">//修改元素属性</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        box.<span class="property">style</span>.<span class="property">width</span> = <span class="string">&#x27;50px&#x27;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        box.<span class="property">style</span>.<span class="property">backgroundColor</span> = <span class="string">&#x27;lightblue&#x27;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：</p>
+<ul>
+<li>修改样式通过style属性引出</li>
+<li>如果属性有 - 连接符，需要转换成小驼峰命名法</li>
+<li>赋值的时候，需要的时候不要忘记加CSS单位</li>
+</ul>
+</blockquote>
+<ul>
+<li><strong>通过操作类名（className）操作CSS</strong></li>
+</ul>
+<p>如果修改的样式比较多，直接通过<code>style</code>属性修改比较繁琐，这时候可以借助CSS类名的形式</p>
+<p>语法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假设active是一个CSS类名</span></span><br><span class="line">元素.<span class="property">className</span> = <span class="string">&#x27;active&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> &lt;style&gt;</span><br><span class="line">        div &#123;</span><br><span class="line">            <span class="attr">width</span>: 30px;</span><br><span class="line">            <span class="attr">height</span>: 30px;</span><br><span class="line">            background-<span class="attr">color</span>: pink;</span><br><span class="line">        &#125;</span><br><span class="line">		.<span class="property">nav</span> &#123;</span><br><span class="line">            <span class="attr">color</span>: red;</span><br><span class="line">        &#125;</span><br><span class="line">		</span><br><span class="line">        .<span class="property">box</span> &#123;</span><br><span class="line">            <span class="attr">width</span>: 100px;</span><br><span class="line">            <span class="attr">height</span>: 100px;</span><br><span class="line">            background-<span class="attr">color</span>: skyblue;</span><br><span class="line">            <span class="attr">margin</span>: 100px auto;</span><br><span class="line">            <span class="attr">border</span>: 1px solid #<span class="number">000</span>; </span><br><span class="line">        &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;nav&quot;</span>&gt;</span>123<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="comment">//获取元素</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">const</span> box = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.box&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="comment">//修改元素属性</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        box.<span class="property">className</span> = <span class="string">&#x27;box&#x27;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>注意：</p>
+<ul>
+<li>由于class是关键字，所以使用className去代替</li>
+<li>className是使用新值换旧值，如果需要添加一个类，需要保留之前的类名，例子中的.box属性会覆盖掉原本的nav属性，如果想保留nav属性，那就写成box.className &#x3D; ‘nav box’</li>
+<li>如果 &#x3D; 后面是类名，那么不用再加 . 了</li>
+</ul>
+</blockquote>
+<h3 id="5-3通过classList操作类控制CSS"><a href="#5-3通过classList操作类控制CSS" class="headerlink" title="5.3通过classList操作类控制CSS"></a>5.3通过classList操作类控制CSS</h3><p>为了解决<code>className</code>容易覆盖以前的类名，我们可以通过<code>className</code>方式追加和删除类名</p>
+<p>语法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//追加一个类</span></span><br><span class="line">元素.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&#x27;类名&#x27;</span>)</span><br><span class="line"><span class="comment">//删除一个类</span></span><br><span class="line">元素.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&#x27;类名&#x27;</span>)</span><br><span class="line"><span class="comment">//切换一个类，有就删掉，没有就加上</span></span><br><span class="line">元素.<span class="property">classList</span>.<span class="title function_">toggle</span>(<span class="string">&#x27;类名&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-操作表单元素属性"><a href="#6-操作表单元素属性" class="headerlink" title="6.操作表单元素属性"></a>6.操作表单元素属性</h2><p>表单很多情况也需要修改哦属性，比如点击眼睛，可以看见密码，其本质是把表单类转换为文本类。正常的有属性有取值的，跟其他标签属性没有任何区别</p>
+<p><strong>获取：</strong>DOM对象.属性名</p>
+<p><strong>设置：</strong>DOM对象.属性名 &#x3D; 新值</p>
+<p><img src="/img/image30.png"></p>
+<p>表单属性中添加就有效果，移除就没有效果，一律使用布尔值表示，如果为<code>true</code>代表添加了该属性，如果是<code>false</code>，则表示移除了该属性，比如：<code>disabled</code>、<code>checked</code>、<code>selected</code></p>
+<h2 id="7-自定义属性"><a href="#7-自定义属性" class="headerlink" title="7.自定义属性"></a>7.自定义属性</h2><ul>
+<li><p><strong>标准属性：</strong>标签天生自带的属性，比如<code>class</code>、<code>title</code>等，可以直接使用点语法操作比如：<code>disable</code>、<code>checked</code>、<code>selected</code></p>
+</li>
+<li><p><strong>自定义属性：</strong>在HTML5中退出了专门的<code>data-</code>自定义属性，在标签上一律以<code>data-</code>开头，在DOM对象上一律以<code>dataset</code>对象方式获取</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> = <span class="string">&quot;box&quot;</span> <span class="attr">data-id</span> = <span class="string">&quot;10&quot;</span>&gt;</span>这是一个盒子<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">	<span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    	<span class="keyword">const</span> box = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.box&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">		<span class="variable language_">console</span>.<span class="title function_">log</span>(box.<span class="property">dataset</span>.<span class="property">id</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="/img/image31.png"></p>
+<h2 id="8-定时器"><a href="#8-定时器" class="headerlink" title="8.定时器"></a>8.定时器</h2><h3 id="8-1定时器——间歇函数"><a href="#8-1定时器——间歇函数" class="headerlink" title="8.1定时器——间歇函数"></a>8.1定时器——间歇函数</h3><p>定时器函数可以开启和关闭定时器</p>
+<p><strong>开启定时器：</strong></p>
+<p><strong>语法：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setInterval</span>(函数,间隔时间)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>作用：每个一段时间调用这个函数</li>
+<li>间隔时间单位是毫秒</li>
+</ul>
+<blockquote>
+<p>注意：</p>
+<ul>
+<li>函数不要加小括号</li>
+<li>定时器返回的是id数字</li>
+</ul>
+</blockquote>
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">repeat</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;每隔一秒执行我&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">setInterval</span>(repeat,<span class="number">1000</span>);</span><br><span class="line"><span class="comment">//每隔一秒执行一次repeat函数</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>关闭定时器：</strong></p>
+<p>语法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> 变量名 = <span class="built_in">setInterval</span>(函数,间隔时间)</span><br><span class="line"><span class="built_in">clearInterval</span>(变量名)</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-2定时器——延时函数"><a href="#8-2定时器——延时函数" class="headerlink" title="8.2定时器——延时函数"></a>8.2定时器——延时函数</h3><p>JavaScript内置的一个用来让代码延迟执行的函数，叫**<code>setTimeout</code>**</p>
+<p><strong>语法：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(回调函数，等待的毫秒数)</span><br></pre></td></tr></table></figure>
+
+<p><code>setTimeout</code>仅仅执行一次，所以可以理解为就是一段代码延迟执行，平时省略<code>window</code></p>
+<p><strong>清除延时函数：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> timer = <span class="built_in">setTimeout</span>(回调函数，等待的毫秒数)</span><br><span class="line"><span class="built_in">clearTimeout</span>(timer)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：</p>
+<ul>
+<li>延时器需要等待，所以后面的代码先执行</li>
+<li>每一次调用延时器都会产生一个新的延时器</li>
+</ul>
+</blockquote>
+<p><strong>两种定时器的区别：</strong></p>
+<ul>
+<li>延时函数：执行一次</li>
+<li>间歇函数：每隔一段时间就执行一次，并非手动清除</li>
+</ul>
+<h2 id="9-事件监听"><a href="#9-事件监听" class="headerlink" title="9.事件监听"></a>9.事件监听</h2><h3 id="9-1概述"><a href="#9-1概述" class="headerlink" title="9.1概述"></a>9.1概述</h3><p>就是让程序检测是否有事件产生，一旦有事件触发，就立即调用一个函数做出响应，也称为 绑定事件或者注册事件。</p>
+<ul>
+<li><strong>语法：</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">元素对象.<span class="title function_">addEventListener</span>(<span class="string">&#x27;事件类型&#x27;</span>,要执行的函数)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>事件监听三要素：</li>
+</ul>
+<ol>
+<li><strong>事件源：</strong>那个DOM元素被事件触发了，要获取DOM元素（就是这里的事件对象）</li>
+<li><strong>事件类型：</strong>用什么方式触发，比如鼠标单击<code>click</code>、鼠标经过<code>mouseover</code>等</li>
+<li><strong>事件调用的函数：</strong>要做什么事</li>
+</ol>
+<h3 id="9-2鼠标事件"><a href="#9-2鼠标事件" class="headerlink" title="9.2鼠标事件"></a>9.2鼠标事件</h3><ul>
+<li><strong>点击相关：</strong></li>
+</ul>
+<ol>
+<li><code>click</code>：鼠标点击（左键）元素时触发</li>
+<li><code>dblclick</code>：鼠标双击元素时触发</li>
+<li><code>contextmenu</code>：右键点击元素时触发</li>
+</ol>
+<ul>
+<li><strong>按键状态：</strong></li>
+</ul>
+<ol>
+<li><code>mousedown</code>：鼠标按键按下时触发（左键&#x2F;右键&#x2F;中键）</li>
+<li><code>mouseup</code>：鼠标按键释放时触发</li>
+</ol>
+<ul>
+<li><strong>鼠标移动：</strong></li>
+</ul>
+<ol>
+<li><code>mousemove</code>：鼠标在元素上移动时持续触发（出发频率高，需注意性能）</li>
+<li><code>mouseenter</code>：鼠标进入元素时触发（不冒泡，子元素不会触发父级元素事件）</li>
+<li><code>mouseleave</code>鼠标离开元素时触发（不冒泡）</li>
+<li><code>mouseover</code>：鼠标进入元素或子孙元素时触发（冒泡）</li>
+<li><code>mouseout</code>：鼠标离开元素或其子孙元素时触发（冒泡）</li>
+</ol>
+<h3 id="9-3焦点事件"><a href="#9-3焦点事件" class="headerlink" title="9.3焦点事件"></a>9.3焦点事件</h3><p>JavaScript 中的焦点事件用于捕获元素获取或失去用户交互焦点的过程，常用于<code>表单</code>交互、键盘导航等场景</p>
+<ol>
+<li><p><code>focus</code>:元素获取焦点时触发（不冒泡）</p>
+<p>触发场景：点击元素、通过<code>tab</code>键导航到元素、调用<code>element.focus()</code>等</p>
+</li>
+<li><p><code>blur</code>：元素失去焦点时触发（不冒泡）</p>
+<p>触发场景：点击其他元素、通过<code>tab</code>键离开元素、调用<code>element.blur()</code>等</p>
+</li>
+<li><p><code>focusin</code>：元素即将获取焦点时触发（<strong>会冒泡</strong>），相当于<code>focus</code>的冒泡版本</p>
+</li>
+<li><p><code>focusout</code>：元素即将失去焦点时触发（<strong>会冒泡</strong>），相当于<code>blur</code>的冒泡版本</p>
+</li>
+</ol>
+<h2 id="10-事件对象"><a href="#10-事件对象" class="headerlink" title="10.事件对象"></a>10.事件对象</h2><p>事件对象是什么：是个对象，这个对象离有事件触发时的相关信息。例如：鼠标点击事件，事件对象就存了鼠标点在哪个位置等信息</p>
+<p>使用场景：可以判断用户按下哪个键，比如按下回车键可以发布评论；可以判断鼠标点击了那个元素，从而做出相应操作</p>
+<ul>
+<li><h3 id="获取事件对象"><a href="#获取事件对象" class="headerlink" title="获取事件对象"></a>获取事件对象</h3></li>
+</ul>
+<p><strong>语法：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">元素.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>,<span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在事件绑定的回调函数的第一个参数就是事件对象</li>
+<li>一般命名为event、ev、e</li>
+</ul>
+<p><strong>部分常用属性：</strong></p>
+<ul>
+<li><code>type</code>：获取当前的事件类型</li>
+<li><code>clientX/clientY</code>：获取光标相对于浏览器可见窗口左上角的位置</li>
+<li><code>offsetX/offsetY</code>：获取光标相对于当前DOM元素左上角的位置</li>
+<li><code>key</code>：用户按下的键盘键的值，现在不提倡使用keyCo</li>
+</ul>
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">button</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">const</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span>(<span class="params">e</span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;你点击了按钮&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="11-环境对象"><a href="#11-环境对象" class="headerlink" title="11.环境对象"></a>11.环境对象</h2><p>这里的环境变量在上一篇文章中的<code>this</code>对象中已经提及并有详细讲解，所以这里就简单的讲一下</p>
+<p><strong>环境变量：</strong>指的是函数内部特殊的变量<code>this</code>，它代表着当前函数运行所处的环境</p>
+<p><strong>作用：</strong>弄清楚<code>this</code>的指向，可以让我们代码更简洁</p>
+<ul>
+<li>函数的调用方式不同，<code>this</code>指代的对象也不同</li>
+<li><strong>【谁调用，this就是谁】</strong> 是判断<code>this</code>指向的粗略规则</li>
+<li>直接调用函数，其实相当于是window.函数，所以<code>this</code>指代window</li>
+</ul>
+<h2 id="12-回调函数"><a href="#12-回调函数" class="headerlink" title="12.回调函数"></a>12.回调函数</h2><p>如果将函数A作为参数传递给函数B时，我们成函数A为<strong>回调函数</strong></p>
+<p><strong>简单理解：</strong>当一个函数当做参数来传递给另一个函数的时候，这个函数就是回调函数</p>
+<p><img src="/img/image32.png"></p>
+<h2 id="13-事件流"><a href="#13-事件流" class="headerlink" title="13.事件流"></a>13.事件流</h2><p>事件流是对事件完整执行过程的描述</p>
+<p><img src="/img/image33.png"></p>
+<p>任意的事件被触发时总会 经历两个阶段：<strong>捕获阶段</strong>和<strong>冒泡阶段</strong></p>
+<p>换句话说捕获阶段就是从父到子的传导过程，冒泡阶段就是从子到父的传导过程</p>
+<h3 id="13-1事件捕获"><a href="#13-1事件捕获" class="headerlink" title="13.1事件捕获"></a>13.1事件捕获</h3><p>因为实际工作中都是使用事件冒泡为主，所以事件捕获简单了解即可</p>
+<p><strong>概念：</strong>从DOM的根元素开始去执行对应的事件（从外到里）</p>
+<p>事件捕获需要写对应代码才能看到效果</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">DOM</span>.<span class="title function_">addEventListener</span>(事件类型，事件处理函数，是否使用捕获机制)</span><br></pre></td></tr></table></figure>
+
+<p><strong>说明：</strong></p>
+<ul>
+<li><code>addEventListener</code>第三个参数传入<code>true</code>代表是捕获阶段触发（很少使用）</li>
+<li>若传入<code>false</code>代表冒泡阶段触发，默认就是<code>false</code></li>
+<li>若使用L0事件监听，则只有冒泡阶段，没有捕获</li>
+</ul>
+<h3 id="13-2事件冒泡"><a href="#13-2事件冒泡" class="headerlink" title="13.2事件冒泡"></a>13.2事件冒泡</h3><p><strong>概念：</strong>当一个元素的事件被触发时，同样的事件将会在该元素的所有祖先元素中依次被触发。这一过程被称为事件冒泡</p>
+<p>简单理解：当一个元素触发事件后，会依次向上调用所有父级元素的<strong>同名事件</strong></p>
+<p>事件冒泡时默认存在的，L2事件监听是第三个参数是<code>false</code>，或者默认都是冒泡</p>
+<h3 id="13-3阻止冒泡"><a href="#13-3阻止冒泡" class="headerlink" title="13.3阻止冒泡"></a>13.3阻止冒泡</h3><p>因为默认就是冒泡模式的存在，所以容易导致事件影响到父级元素，如果想把事件限制在当前元素内，就需要阻止事件冒泡</p>
+<p><strong>前提：</strong>阻止事件冒泡需要拿到事件对象</p>
+<p><strong>语法：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">事件对象.<span class="title function_">stopPropagation</span>()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：此方法可以阻断事件流动传播，不光在冒泡阶段有效，捕获阶段也有效</p>
+</blockquote>
+<h3 id="13-4事件解绑"><a href="#13-4事件解绑" class="headerlink" title="13.4事件解绑"></a>13.4事件解绑</h3><p>我们可以给一个元素绑定一个事件，也可以把这个事件移除掉</p>
+<p>对于<code>addEventListener</code>方式，必须使用：<code>removeEventListener</code>(事件类型，事件处理函数，[获取捕获或者冒泡阶段])</p>
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&#x27;点击了&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//绑定事件</span></span><br><span class="line">btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>,fn);</span><br><span class="line"><span class="comment">//解绑事件</span></span><br><span class="line">btn.<span class="title function_">removeEventListener</span>(<span class="string">&#x27;click&#x27;</span>,fn);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：<strong>匿名函数无法被解绑</strong>，所以这里要单独命名一个函数</p>
+</blockquote>
+<h2 id="14-事件委托"><a href="#14-事件委托" class="headerlink" title="14.事件委托"></a>14.事件委托</h2><p>事件委托时利用事件流的特征解决一些开发需求的知识技巧</p>
+<p><strong>优点：</strong>减少注册次数，可以提高程序性能</p>
+<p><strong>原理：</strong>事件委托其实还利用事件冒泡的特点。给父元素注册事件，当我们触发子元素的时候，会冒泡到父元素身上，从而触发父元素的事件</p>
+<p><strong>实现：</strong> <strong>事件对象.target.tagName</strong> 可以获得真正触发事件的元素</p>
+<blockquote>
+<p>注意：</p>
+<ul>
+<li>事件对象.target时事件实际触发的元素，他可能是直接子元素、深层后代元素，甚至就是父级元素本身</li>
+<li>在使用事件委托的时候，绑定事件的事件类型通常需要具备<strong>冒泡特性</strong></li>
+</ul>
+</blockquote>
+<h3 id="14-1阻止元素默认行为"><a href="#14-1阻止元素默认行为" class="headerlink" title="14.1阻止元素默认行为"></a>14.1阻止元素默认行为</h3><p>我们某些情况下需要阻止默认行为的发生，比如阻止连接跳转，表单域跳转</p>
+<p>语法：</p>
+<p><img src="/img/image34.png"></p>
+<h2 id="15-其他事件"><a href="#15-其他事件" class="headerlink" title="15.其他事件"></a>15.其他事件</h2><h3 id="15-1页面加载事件"><a href="#15-1页面加载事件" class="headerlink" title="15.1页面加载事件"></a>15.1页面加载事件</h3><p>加载外部资源（如图片、外联CSS和JavaScript等）加载完毕时触发的事件</p>
+<ul>
+<li>有些时候需要等页面全部处理了做一些事情</li>
+<li>老代码喜欢吧<code>script</code>写在<code>head</code>中，这时候直接找dom元素找不到</li>
+</ul>
+<p>事件名：<code>load</code></p>
+<p>监听页面所有资源加载完毕：给<code>window</code>添加<code>load</code>事件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//页面加载事件</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;load&#x27;</span>,<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//执行的操作</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：不光可以监听整个页面资源加载完毕，也可以针对某个资源绑定load事件</p>
+</blockquote>
+<p>当初始的HTML文档被完全加载和解析完成之后，<code>DOMContentLoaded</code>事件被触发，而无需等待样式表、图像等完全加载</p>
+<p>事件名：<code>DOMContentLoaded</code></p>
+<p>监听页面DOM加载完毕：给<code>document</code>添加<code>DOMContentLoaded</code>事件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;DOMContentLoaded&#x27;</span>,<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//执行的操作</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="15-2页面滚动事件"><a href="#15-2页面滚动事件" class="headerlink" title="15.2页面滚动事件"></a>15.2页面滚动事件</h3><p>很多网页需要检测用户把页面滚动到某个区域后执行做一些处理，比如固定导航栏，比如返回顶部</p>
+<p>事件名：scroll</p>
+<p>监听整个页面滚动：给window或document添加scroll事件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//页面滚动事件</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;scroll&#x27;</span>,<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//执行的操作</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>监听某个元素的内部滚动直接给某个元素加即可</p>
+<ul>
+<li><strong><code>scrollLeft</code>和<code>scrollTop</code>属性</strong></li>
+</ul>
+<ol>
+<li>获取被卷去的大小</li>
+<li>获取元素内容往左、往上滚出去看不到的距离</li>
+<li>这两个值是可读写的</li>
+</ol>
+<blockquote>
+<p>注意：尽量在<code>scroll</code>事件里面获取被卷去的距离</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div.<span class="title function_">addEventListener</span>(<span class="string">&#x27;scroll&#x27;</span>,<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">scrollTop</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>开发中，我们经常检测页面滚动的距离，比如页面滚动100像素，就可以显示一个元素，或者固定一个元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//页面滚动事件</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;scroll&#x27;</span>,<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//docment.documentElement 是html元素获取方式</span></span><br><span class="line">    <span class="keyword">const</span> n = docment.<span class="property">documentElement</span>.<span class="property">scrollTop</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(n)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：docment.documentElement  HTML 文档返回对象为HTML元素</p>
+</blockquote>
+<p><img src="/img/image35.png"></p>
+<h2 id="16-元素尺寸与位置"><a href="#16-元素尺寸与位置" class="headerlink" title="16.元素尺寸与位置"></a>16.元素尺寸与位置</h2><ul>
+<li><p><strong>使用场景：</strong>前面案例滚动多少距离都是我们自己算的，最好是页面滚动到某个元素，就可以做某些事。简单来说就是通过js的方式，得到某个元素在页面中的位置。</p>
+</li>
+<li><p><strong>获取宽高：</strong></p>
+</li>
+</ul>
+<ol>
+<li>获取元素的自身宽高，包含元素自身设置的宽高、<code>padding</code>、<code>border</code></li>
+<li><code>offsetWidth</code>和<code>offsetHeight</code></li>
+<li>获取出来的是数值，方便计算</li>
+<li>注意：获取的是可视宽高，如果盒子是隐藏的，获取的结果是0</li>
+</ol>
+<ul>
+<li><strong>获取位置：</strong></li>
+</ul>
+<ol>
+<li>获取元素距离自己定位父级元素的左、上距离</li>
+<li><code>offsetLeft</code>和<code>offsetTop</code> 注意是只读属性</li>
+<li>上面是第一种获取位置的方法，还有一个是element.getBoundingClientRect() 该方法返回元素的大小及其相对于视口的位置</li>
+</ol>
+<p><strong>总结一下吧</strong></p>
+<p><img src="/img/image36.png"></p>
+<h2 id="17-日期对象"><a href="#17-日期对象" class="headerlink" title="17.日期对象"></a>17.日期对象</h2><p>其实对于日期对象（Data对象）在JavaScript基础语法中已经提及到了，这里再讲一下如何使用吧~</p>
+<h3 id="17-1实例化"><a href="#17-1实例化" class="headerlink" title="17.1实例化"></a>17.1实例化</h3><p>在代码中发现了<code>new</code>关键字时，一般将这个操作称为实例化</p>
+<p>创建一个事件对象并获取时间</p>
+<p><img src="/img/image37.png"></p>
+<h3 id="17-2日期对象方法"><a href="#17-2日期对象方法" class="headerlink" title="17.2日期对象方法"></a>17.2日期对象方法</h3><p> 使用场景：因为日期对象返回的数据我们不能直接使用，所以需要转换为实际开发中常用的格式</p>
+<p><img src="/img/image38.png"></p>
+<h3 id="17-3时间戳"><a href="#17-3时间戳" class="headerlink" title="17.3时间戳"></a>17.3时间戳</h3><p>时间戳是指1970年01月01日00时00分00秒起到现在的毫秒数，它是一种特殊的计算时间的方式</p>
+<p><strong>使用场景：</strong>如果计算倒计时效果，前面的方法无法直接计算，需要借助于时间戳完成</p>
+<p><strong>算法：</strong></p>
+<ul>
+<li>将来的时间戳 - 现在的时间戳 &#x3D; 剩余的时间戳</li>
+<li>剩余时间毫秒数 转换为 剩余时间的 年月日时分秒 就是倒计时时间</li>
+<li>1000ms &#x3D; 1s</li>
+</ul>
+<p><strong>时间戳的获取方法：</strong></p>
+<ol>
+<li>使用<code>getTime()</code> 方法</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(date.<span class="title function_">getTime</span>());</span><br></pre></td></tr></table></figure>
+
+<p>​	2.简写 <code>+new Date()</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="keyword">new</span> <span class="title class_">Date</span>());</span><br></pre></td></tr></table></figure>
+
+<p>​	3.使用 <code>Date.now()</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Date</span>.<span class="title function_">now</span>())</span><br></pre></td></tr></table></figure>
+
+<p>这个方法不需要实例化，但是只能得到当前的时间戳，而前面两种可以返回指定时间的时间戳</p>
+<h2 id="18-节点操作"><a href="#18-节点操作" class="headerlink" title="18.节点操作"></a>18.节点操作</h2><h3 id="18-1-DOM节点"><a href="#18-1-DOM节点" class="headerlink" title="18.1 DOM节点"></a>18.1 DOM节点</h3><p>DOM树里每一个内容都称之为节点</p>
+<p>常用的节点分为四类：</p>
+<ul>
+<li><p>文档节点：整个HTML文档</p>
+</li>
+<li><p>元素节点：所有的标签，其中html是根节点</p>
+</li>
+<li><p>属性节点：所有的属性</p>
+</li>
+<li><p>文本节点：HTML标签中的文本内容</p>
+</li>
+</ul>
+<h3 id="18-2查找节点"><a href="#18-2查找节点" class="headerlink" title="18.2查找节点"></a>18.2查找节点</h3><p>通过节点查找，我们不用再一个一个的获取元素</p>
+<ul>
+<li><strong>父节点查找：</strong></li>
+</ul>
+<p><code>parentNode</code>属性，返回最近一级的父节点，如果找不到返回为null</p>
+<p><img src="/img/image39.png"></p>
+<ul>
+<li><strong>子节点查找：</strong></li>
+</ul>
+<ol>
+<li><strong><code>childNodes</code>：</strong>获得所有子节点、包括文本节点（空格、换行）、注释节点等</li>
+<li><strong><code>children</code>属性（重点）：</strong>仅获得所有元素节点，返回的还是一个<strong>伪数组</strong></li>
+</ol>
+<p><img src="/img/image40.png"></p>
+<ul>
+<li><strong>兄弟关系查找：</strong></li>
+</ul>
+<ol>
+<li>下一个兄弟节点：<code>nextElementSibling</code>属性</li>
+<li>上一个兄弟节点：<code>previousElementSibling</code>属性</li>
+</ol>
+<h3 id="18-3增加节点"><a href="#18-3增加节点" class="headerlink" title="18.3增加节点"></a>18.3增加节点</h3><ul>
+<li><strong>创建节点：</strong>即创造出一个新的网页元素，再添加到网页内，一般先创建节点，然后插入节点</li>
+</ul>
+<p>创建元素节点的方法：</p>
+<p><img src="/img/image41.png"></p>
+<ul>
+<li><strong>追加节点：</strong>要想在界面看到创建的节点，还得插入到某个父元素中</li>
+</ul>
+<ol>
+<li>插入到父元素的最后一个子元素：</li>
+</ol>
+<p><img src="/img/image42.png"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>我是老大<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">const</span> ul = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;ul&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">const</span> li = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;li&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        li.<span class="property">innerHTML</span> = <span class="string">&#x27;我是新增的li&#x27;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        ul.<span class="title function_">appendChild</span>(li);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="/img/image43.png"></p>
+<p>​	2.插入到父元素中某个子元素的前面：</p>
+<p><img src="/img/image44.png"></p>
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>我是老大<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">const</span> ul = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;ul&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">const</span> li = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;li&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        li.<span class="property">innerHTML</span> = <span class="string">&#x27;我是新增的li&#x27;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="comment">// ul.appendChild(li);</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        ul.<span class="title function_">insertBefore</span>(li,ul.<span class="property">children</span>[<span class="number">0</span>]);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="/img/image45.png"></p>
+<ul>
+<li>在增加节点中有一个特殊的例子：复制一个原有的节点，把复制的节点放到指定的元素内部，我们称之为<strong>克隆节点</strong></li>
+</ul>
+<p><img src="/img/image46.png"></p>
+<p><code>cloneNode</code>会克隆出一个跟原标签一样的元素，括号内传入布尔值：若为<code>true</code>，则代表克隆时会包含后代节点一起克隆；若为<code>false</code>，则代表克隆时不包含后代节点；默认为<code>false</code></p>
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">const</span> ul = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;ul&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="comment">//克隆第一个li</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">const</span> li1 = ul.<span class="property">children</span>[<span class="number">0</span>].<span class="title function_">cloneNode</span>(<span class="literal">true</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="comment">//追加节点</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        ul.<span class="title function_">appendChild</span>(li1);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="/img/image47.png"></p>
+<h3 id="18-4删除节点"><a href="#18-4删除节点" class="headerlink" title="18.4删除节点"></a>18.4删除节点</h3><p>在网页中如果一个节点已经不需要时，可以删除掉他，在JavaScript原生DOM操作中，要删除元素必须通过父元素删除</p>
+<p>语法：</p>
+<p><img src="/img/image48.png"></p>
+<blockquote>
+<p>注意：</p>
+<ul>
+<li>如果不存在父子关系则删除不成功</li>
+<li>删除节点和隐藏节点（<code>display:none</code>）是有区别的：隐藏节点还是存在的，但是删除，则从html中删除节点</li>
+</ul>
+</blockquote>
+<h2 id="19-M端事件"><a href="#19-M端事件" class="headerlink" title="19.M端事件"></a>19.M端事件</h2><p>移动端也有自己独特的地方，比如触屏事件 touch（也称触摸事件），Android和iOS都有</p>
+<p>常见的触屏事件如下：</p>
+<table>
+<thead>
+<tr>
+<th>touch触屏事件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>touchstart</td>
+<td>手指触摸到一个DOM元素时触发</td>
+</tr>
+<tr>
+<td>touchmove</td>
+<td>手指在一个DOM元素上滑动时触发</td>
+</tr>
+<tr>
+<td>touchend</td>
+<td>手指从一个DOM元素上移开时触发</td>
+</tr>
+</tbody></table>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/2026/02/22/Javascript%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"
+      title="JavaScript基础语法"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        JavaScript基础语法
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2026/02/22/BOM%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/"
+      title="BOM的简单学习"
+     >
+
+    <p class="title-text">
+      
+        BOM的简单学习
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2026 lllzh<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>
