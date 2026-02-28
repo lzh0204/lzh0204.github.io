@@ -676,6 +676,39 @@ navbar,
 .widget dt {
   font-weight: bold;
 }
+#navbar {
+  border-radius: 30px !important;
+  position: relative;
+  top: 10px !important;
+}
+#main-nav {
+  margin-left: auto;
+}
+.main-nav-link {
+  font-size: 18px;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  background-image: url("/img/bg.jpg");
+  background-size: cover /* 铺满整个屏幕 */;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed /* 背景固定，不随滚动 */;
+  z-index: -1;
+}
+#main {
+  position: relative;
+  z-index: 1;
+}
+#container,
+.main,
+.site-wrapper {
+  backdrop-filter: none !important;
+  filter: none !important;
+}
 :root #nav {
   height: 72px;
 }
