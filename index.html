@@ -149,7 +149,17 @@
                 前端
                 <div class="category-count">4</div>
             </a>
-        </div>
+        
+            <a class="category-link" href="/categories/Python/">
+                Python
+                <div class="category-count">1</div>
+            </a>
+        <div class="children"><div class="category-box">
+            <a class="category-link" href="/categories/Python/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
+                面向对象编程
+                <div class="category-count">1</div>
+            </a>
+        </div></div></div>
     </div>
   </div>
 
@@ -166,7 +176,7 @@
    
 
 
-<article id="post-Javascript基础语法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-Python-OOP" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -177,7 +187,7 @@
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2026/02/22/Javascript%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">JavaScript基础语法</a>
+        <a class="p-name article-title" href="/2026/03/18/Python-OOP/">Python面向对象编程</a>
       </h1>
     
   
@@ -185,18 +195,18 @@
 
         <div class='meta-info-bar'>
           <div class="meta-info">
-  <time class="dt-published" datetime="2026-02-21T16:00:00.000Z" itemprop="datePublished">2026-02-22</time>
+  <time class="dt-published" datetime="2026-03-18T11:48:04.000Z" itemprop="datePublished">2026-03-18</time>
 </div>
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
   
-  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  <a class="meta-cate-link" href="/categories/Python/">Python</a>><a class="meta-cate-link" href="/categories/Python/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">面向对象编程</a>
    
 </div>
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            12k 词 
+            5.3k 词 
           </div>
         </div>
         
@@ -205,34 +215,21 @@
         
           <div class="truncate-text">
             
-              JavaScript基础语法1.变量1.1.1变量的理解目标：理解变量是计算机存储数据的“容器”（变量就是一个装东西的盒子）
+              面向对象编程（Object-Oriented Programming，简称 OOP）是一种编程范式，核心思想是将程序中的数据和操作数据的方法封装成 “对象”，通过对象之间的交互来完成程序功能。
+核心优势：
 
-注意：变量不是数据本身，他们仅仅是一个用于存储数值的容器。可以理解为一个个用来装东西的盒子
+复用性高：继承可直接复用已有代码，避免重复编写；
 
-1.1.2变量的使用变量的作用是给某一个值或对象标注名称。
-1.变量的声明
-语法：
-使用let关键字声明一个变量
-1let a;
+易维护扩展：封装使代码模块化，修改 &#x2F; 新增功能不影响整体；
 
-2. let和var的区别
-在较旧的JavaScript,使用关键字 var 来声明变量,而不是let。
-var 现在开发中一般不再使用它,只是我们可能再老版程序中看到它。
- let为了解决 var 的一些问题。
-var声明：
+结构清晰：贴合人类思维习惯，代码可读性、协作性更强。
 
-可以先使用 再声明（不合理）
-var声明过的变量可以重复使用（不合理）
-比如变量提升、全局变量、没有块级作用域
 
-结论：var 就是个bug，别迷恋他，以后声明变量统一用let 
-3.变量的赋值：使用 &#x3D; 完成赋值
-1a = 10;
+一、类与对象1.类类的基本结构包括类名、属性和方法。举个很形象的栗子：我们可以将“手机”看成一个类，其中它的屏幕尺寸、像素等是它的属性，打电话、拍照等具备的功能是方法。
+1.1、定义类代码示例：
+12345678class 类名:    属性1=表达式1    属性2=表达式2        def 方法1(参数):        方法的实现    def 方法2(参数):        方法的实现
 
-4.声明和赋值同时进行
-1let a = 10;
-
-2.常量使用const声明的变量称为“常量”。当某个变量永远不会改变的时候，就可以使用const来声明，而不是l...
+1.2、构造方法在 Python 面向对象编程中，构造方法（__init__） 是创建对象时自动调用的特殊方法，核心作用是初始化对象的属性，让每个实例一创建就拥有自定义的初始状态。下面我会从基础用...
             
           </div>
         
@@ -244,7 +241,7 @@ var声明过的变量可以重复使用（不合理）
      
     <a class="right-panel  non-pic  "
       
-      href="/2026/02/22/Javascript%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" 
+      href="/2026/03/18/Python-OOP/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -364,6 +361,93 @@ document 对象：
    
 
 
+<article id="post-BOM的简单学习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2026/02/22/BOM%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/">BOM的简单学习</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2026-02-21T16:00:00.000Z" itemprop="datePublished">2026-02-22</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2k 词 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              BOM的简单学习1.什么是BOM？BOM（Browser Object Model）是浏览器对象模型
+浏览器对象模型（BOM）可以使我们通过JS来操作浏览器，在BOM中为我们提供了一组对象，用来完成对浏览器的操作，常见的BOM对象如下：
+
+**Window:**代表的是整个浏览器的窗口,同时window也是网页中的全局对象
+
+Navigator: 代表的当前浏览器的信息,通过该对象可以来识别不同的浏览器
+
+Location: 代表当前浏览器的地址栏信息,通过Location可以获取地址栏信息,或者操作浏览器跳转页面
+
+History: 代表浏览器的历史记录,可以通过该对象来操作浏览器的历史记录,由于隐私原因,该对象不能获取到具体的历史记录,只 能操作浏览器向前或向后翻页,而且该操作只在当次访问时有效
+
+**Screen:**代表用户的屏幕的信息,通过该对象可以获取到用户的显示器的相关的信息
+
+
+2.window对象
+
+window对象是一个全局变量，也可以说是JavaScript中的顶级对象
+像document、alert()、console.log()这些都是window的属性...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2026/02/22/BOM%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-JavaScript进阶知识" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -453,7 +537,7 @@ document 对象：
    
 
 
-<article id="post-BOM的简单学习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-Javascript基础语法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -464,7 +548,7 @@ document 对象：
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2026/02/22/BOM%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/">BOM的简单学习</a>
+        <a class="p-name article-title" href="/2026/02/22/Javascript%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">JavaScript基础语法</a>
       </h1>
     
   
@@ -483,7 +567,7 @@ document 对象：
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2k 词 
+            12k 词 
           </div>
         </div>
         
@@ -492,24 +576,34 @@ document 对象：
         
           <div class="truncate-text">
             
-              BOM的简单学习1.什么是BOM？BOM（Browser Object Model）是浏览器对象模型
-浏览器对象模型（BOM）可以使我们通过JS来操作浏览器，在BOM中为我们提供了一组对象，用来完成对浏览器的操作，常见的BOM对象如下：
+              JavaScript基础语法1.变量1.1.1变量的理解目标：理解变量是计算机存储数据的“容器”（变量就是一个装东西的盒子）
 
-**Window:**代表的是整个浏览器的窗口,同时window也是网页中的全局对象
+注意：变量不是数据本身，他们仅仅是一个用于存储数值的容器。可以理解为一个个用来装东西的盒子
 
-Navigator: 代表的当前浏览器的信息,通过该对象可以来识别不同的浏览器
+1.1.2变量的使用变量的作用是给某一个值或对象标注名称。
+1.变量的声明
+语法：
+使用let关键字声明一个变量
+1let a;
 
-Location: 代表当前浏览器的地址栏信息,通过Location可以获取地址栏信息,或者操作浏览器跳转页面
+2. let和var的区别
+在较旧的JavaScript,使用关键字 var 来声明变量,而不是let。
+var 现在开发中一般不再使用它,只是我们可能再老版程序中看到它。
+ let为了解决 var 的一些问题。
+var声明：
 
-History: 代表浏览器的历史记录,可以通过该对象来操作浏览器的历史记录,由于隐私原因,该对象不能获取到具体的历史记录,只 能操作浏览器向前或向后翻页,而且该操作只在当次访问时有效
+可以先使用 再声明（不合理）
+var声明过的变量可以重复使用（不合理）
+比如变量提升、全局变量、没有块级作用域
 
-**Screen:**代表用户的屏幕的信息,通过该对象可以获取到用户的显示器的相关的信息
+结论：var 就是个bug，别迷恋他，以后声明变量统一用let 
+3.变量的赋值：使用 &#x3D; 完成赋值
+1a = 10;
 
+4.声明和赋值同时进行
+1let a = 10;
 
-2.window对象
-
-window对象是一个全局变量，也可以说是JavaScript中的顶级对象
-像document、alert()、console.log()这些都是window的属性...
+2.常量使用const声明的变量称为“常量”。当某个变量永远不会改变的时候，就可以使用const来声明，而不是l...
             
           </div>
         
@@ -521,7 +615,7 @@ window对象是一个全局变量，也可以说是JavaScript中的顶级对象
      
     <a class="right-panel  non-pic  "
       
-      href="/2026/02/22/BOM%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" 
+      href="/2026/02/22/Javascript%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
