@@ -152,7 +152,7 @@
         
             <a class="category-link" href="/categories/Python/">
                 Python
-                <div class="category-count">1</div>
+                <div class="category-count">2</div>
             </a>
         <div class="children"><div class="category-box">
             <a class="category-link" href="/categories/Python/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
@@ -173,6 +173,81 @@
     </div>
     <div id="content-body">
       
+   
+
+
+<article id="post-PySpark" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2026/03/25/PySpark/">PySpark</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2026-03-25T12:07:08.000Z" itemprop="datePublished">2026-03-25</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/Python/">Python</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            6.4k 词 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              一、简单介绍一下Spark 是一款专门用来处理超大数据的分布式计算引擎，简单来说，普通电脑算不动的大数据，交给Spark就能很快算完
+PySpark 就是用Python语言来写大数据处理程序的工具
+PySpark 的编程模型是数据输入、数据计算和数据输出三大步骤。首先要通过 SparkContext 完成数据读取，然后把读取到的数据转换为 RDD 对象，调用 RDD 的成员方法完成计算，最后调用 RDD 的数据输出相关成员方法，将结果输出到 list、元组、字典、文本文件、数据库等
+二、数据输入PySpark 支持多种数据输入，在数据输入完之后会得到一个 RDD 对象（弹性分布式数据集），然后以 RDD 对象为载体对数据进行处理
+1、Python数据容器转RDD对象支持转换的数据容器有list，tuple，set，dict，str，其中str容器会输出单个字符，dict 容器会输出它的所有 key 值
+12345678910111213141516from pyspark import SparkContext, SparkConfconf=SparkConf().setMast...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2026/03/25/PySpark/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
    
 
 
@@ -242,194 +317,6 @@
     <a class="right-panel  non-pic  "
       
       href="/2026/03/18/Python-OOP/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-DOM &amp; 事件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2026/02/22/DOM%20&%20%E4%BA%8B%E4%BB%B6/">DOM &amp; 事件</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2026-02-21T16:00:00.000Z" itemprop="datePublished">2026-02-22</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            12k 词 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              DOM &amp; 事件1.声明变量const优先原因：
-
-const语义化更好
-很多变量我们声明的时候会知道他不会被更改了，那为什么不用const呢？
-实际开发中也是，比如react框架，基本const
-
-
-建议：有了变量先给const，如果后面发现他是要被修改的，再改为let
-
-2.DOM概述DOM（Document Object Model ——文档对象模型）是浏览器提供的一套专门用来操作网页内容的功能
-作用：开发网页内容特效和实现用户交互
-2.1DOM树DOM树是什么：
-
-将HTML文档以树状结构直观的变现出来，我们称之为文档树或DOM树
-描述网页内容关系的名词
-作用：文档树直观的体现了标签与标签之间的关系
-
-
-2.2DOM对象概念：浏览器根据HTML标签生成的JS对象
-
-所有的标签属性都可以在这个对象上找到
-修改这个对象的属性会自动映射到标签身上
-
-
-在HTML中是标签，而在js中是DOM对象
-
-核心思想：把网页内容当成对象来处理
-document 对象：
-
-是DOM里提供的一个对象
-所以它提供的属性和方法都是用来访问和操作网页内容的
-页面所有内容都在document里...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2026/02/22/DOM%20&%20%E4%BA%8B%E4%BB%B6/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-BOM的简单学习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2026/02/22/BOM%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/">BOM的简单学习</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2026-02-21T16:00:00.000Z" itemprop="datePublished">2026-02-22</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            2k 词 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              BOM的简单学习1.什么是BOM？BOM（Browser Object Model）是浏览器对象模型
-浏览器对象模型（BOM）可以使我们通过JS来操作浏览器，在BOM中为我们提供了一组对象，用来完成对浏览器的操作，常见的BOM对象如下：
-
-**Window:**代表的是整个浏览器的窗口,同时window也是网页中的全局对象
-
-Navigator: 代表的当前浏览器的信息,通过该对象可以来识别不同的浏览器
-
-Location: 代表当前浏览器的地址栏信息,通过Location可以获取地址栏信息,或者操作浏览器跳转页面
-
-History: 代表浏览器的历史记录,可以通过该对象来操作浏览器的历史记录,由于隐私原因,该对象不能获取到具体的历史记录,只 能操作浏览器向前或向后翻页,而且该操作只在当次访问时有效
-
-**Screen:**代表用户的屏幕的信息,通过该对象可以获取到用户的显示器的相关的信息
-
-
-2.window对象
-
-window对象是一个全局变量，也可以说是JavaScript中的顶级对象
-像document、alert()、console.log()这些都是window的属性...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2026/02/22/BOM%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -616,6 +503,194 @@ var声明过的变量可以重复使用（不合理）
     <a class="right-panel  non-pic  "
       
       href="/2026/02/22/Javascript%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-BOM的简单学习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2026/02/22/BOM%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/">BOM的简单学习</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2026-02-21T16:00:00.000Z" itemprop="datePublished">2026-02-22</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2k 词 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              BOM的简单学习1.什么是BOM？BOM（Browser Object Model）是浏览器对象模型
+浏览器对象模型（BOM）可以使我们通过JS来操作浏览器，在BOM中为我们提供了一组对象，用来完成对浏览器的操作，常见的BOM对象如下：
+
+**Window:**代表的是整个浏览器的窗口,同时window也是网页中的全局对象
+
+Navigator: 代表的当前浏览器的信息,通过该对象可以来识别不同的浏览器
+
+Location: 代表当前浏览器的地址栏信息,通过Location可以获取地址栏信息,或者操作浏览器跳转页面
+
+History: 代表浏览器的历史记录,可以通过该对象来操作浏览器的历史记录,由于隐私原因,该对象不能获取到具体的历史记录,只 能操作浏览器向前或向后翻页,而且该操作只在当次访问时有效
+
+**Screen:**代表用户的屏幕的信息,通过该对象可以获取到用户的显示器的相关的信息
+
+
+2.window对象
+
+window对象是一个全局变量，也可以说是JavaScript中的顶级对象
+像document、alert()、console.log()这些都是window的属性...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2026/02/22/BOM%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-DOM &amp; 事件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2026/02/22/DOM%20&%20%E4%BA%8B%E4%BB%B6/">DOM &amp; 事件</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2026-02-21T16:00:00.000Z" itemprop="datePublished">2026-02-22</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            12k 词 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              DOM &amp; 事件1.声明变量const优先原因：
+
+const语义化更好
+很多变量我们声明的时候会知道他不会被更改了，那为什么不用const呢？
+实际开发中也是，比如react框架，基本const
+
+
+建议：有了变量先给const，如果后面发现他是要被修改的，再改为let
+
+2.DOM概述DOM（Document Object Model ——文档对象模型）是浏览器提供的一套专门用来操作网页内容的功能
+作用：开发网页内容特效和实现用户交互
+2.1DOM树DOM树是什么：
+
+将HTML文档以树状结构直观的变现出来，我们称之为文档树或DOM树
+描述网页内容关系的名词
+作用：文档树直观的体现了标签与标签之间的关系
+
+
+2.2DOM对象概念：浏览器根据HTML标签生成的JS对象
+
+所有的标签属性都可以在这个对象上找到
+修改这个对象的属性会自动映射到标签身上
+
+
+在HTML中是标签，而在js中是DOM对象
+
+核心思想：把网页内容当成对象来处理
+document 对象：
+
+是DOM里提供的一个对象
+所以它提供的属性和方法都是用来访问和操作网页内容的
+页面所有内容都在document里...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2026/02/22/DOM%20&%20%E4%BA%8B%E4%BB%B6/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
