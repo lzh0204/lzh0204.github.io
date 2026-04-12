@@ -152,9 +152,14 @@
         
             <a class="category-link" href="/categories/Python/">
                 Python
-                <div class="category-count">2</div>
+                <div class="category-count">3</div>
             </a>
         <div class="children"><div class="category-box">
+            <a class="category-link" href="/categories/Python/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%BA%93/">
+                数据科学库
+                <div class="category-count">1</div>
+            </a>
+        
             <a class="category-link" href="/categories/Python/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
                 面向对象编程
                 <div class="category-count">1</div>
@@ -173,6 +178,91 @@
     </div>
     <div id="content-body">
       
+   
+
+
+<article id="post-Numpy" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2026/04/09/Numpy/">NumPy</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2026-04-09T10:33:17.000Z" itemprop="datePublished">2026-04-09</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/Python/">Python</a>><a class="meta-cate-link" href="/categories/Python/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%BA%93/">数据科学库</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            8.3k 词 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              一、简介NumPy 是Python中专门用来做数值计算、矩阵运算的核心库。Python中原本没有数组&#x2F;矩阵，**NumPy** 给他补上了这套能力
+NumPy 的作用：
+创建、操作多维数组：一维向量、二维矩阵、三维图片张量都能存
+快速数学运算：求和、均值、方差、矩阵乘法、逆矩阵、随机数等
+
+二、Ndarray 对象ndarray（N维数组对象）是用来存储同类型数据的多维表格，所有向量化计算、矩阵运算都围绕他展开
+核心特点
+固定类型：创建后，数组内所有的元素的数据类型（dtype）是相同的。这使其内存占用更紧凑，计算速度更快
+多维性：可以是一维（向量）、二维（矩阵）、三维甚至更高维（张量）
+向量化操作：可以直接对整个数组或某个维度进行数学运算，而无需编写显示的循环，这通常比原生Python列表快一到两个数量级
+内存高效：数据存储在连续的内存块中，并利用底层 C 和 Fortran 库进行优化
+
+创建方式基本的 ndarray 是使用 NumPy 中的数组函数创建的
+12import numpy as npnp.array()
+
+它从任何暴露数组接口的对象或从返回数组的任何...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2026/04/09/Numpy/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
    
 
 
@@ -521,93 +611,6 @@ var声明过的变量可以重复使用（不合理）
    
 
 
-<article id="post-BOM的简单学习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2026/02/22/BOM%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/">BOM的简单学习</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2026-02-21T16:00:00.000Z" itemprop="datePublished">2026-02-22</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            2k 词 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              BOM的简单学习1.什么是BOM？BOM（Browser Object Model）是浏览器对象模型
-浏览器对象模型（BOM）可以使我们通过JS来操作浏览器，在BOM中为我们提供了一组对象，用来完成对浏览器的操作，常见的BOM对象如下：
-
-**Window:**代表的是整个浏览器的窗口,同时window也是网页中的全局对象
-
-Navigator: 代表的当前浏览器的信息,通过该对象可以来识别不同的浏览器
-
-Location: 代表当前浏览器的地址栏信息,通过Location可以获取地址栏信息,或者操作浏览器跳转页面
-
-History: 代表浏览器的历史记录,可以通过该对象来操作浏览器的历史记录,由于隐私原因,该对象不能获取到具体的历史记录,只 能操作浏览器向前或向后翻页,而且该操作只在当次访问时有效
-
-**Screen:**代表用户的屏幕的信息,通过该对象可以获取到用户的显示器的相关的信息
-
-
-2.window对象
-
-window对象是一个全局变量，也可以说是JavaScript中的顶级对象
-像document、alert()、console.log()这些都是window的属性...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2026/02/22/BOM%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
 <article id="post-DOM &amp; 事件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -691,6 +694,93 @@ document 对象：
     <a class="right-panel  non-pic  "
       
       href="/2026/02/22/DOM%20&%20%E4%BA%8B%E4%BB%B6/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-BOM的简单学习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2026/02/22/BOM%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/">BOM的简单学习</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2026-02-21T16:00:00.000Z" itemprop="datePublished">2026-02-22</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2k 词 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              BOM的简单学习1.什么是BOM？BOM（Browser Object Model）是浏览器对象模型
+浏览器对象模型（BOM）可以使我们通过JS来操作浏览器，在BOM中为我们提供了一组对象，用来完成对浏览器的操作，常见的BOM对象如下：
+
+**Window:**代表的是整个浏览器的窗口,同时window也是网页中的全局对象
+
+Navigator: 代表的当前浏览器的信息,通过该对象可以来识别不同的浏览器
+
+Location: 代表当前浏览器的地址栏信息,通过Location可以获取地址栏信息,或者操作浏览器跳转页面
+
+History: 代表浏览器的历史记录,可以通过该对象来操作浏览器的历史记录,由于隐私原因,该对象不能获取到具体的历史记录,只 能操作浏览器向前或向后翻页,而且该操作只在当次访问时有效
+
+**Screen:**代表用户的屏幕的信息,通过该对象可以获取到用户的显示器的相关的信息
+
+
+2.window对象
+
+window对象是一个全局变量，也可以说是JavaScript中的顶级对象
+像document、alert()、console.log()这些都是window的属性...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2026/02/22/BOM%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
