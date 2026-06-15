@@ -17,12 +17,18 @@
   <title>lzh0204</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="分享前端开发、Python、数据科学等技术笔记">
+<meta property="og:type" content="website">
 <meta property="og:title" content="lzh0204">
 <meta property="og:url" content="https://lzh0204.github.io/index.html">
 <meta property="og:site_name" content="lzh0204">
+<meta property="og:description" content="分享前端开发、Python、数据科学等技术笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="lzh0204">
+<meta property="article:tag" content="前端开发">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="技术博客">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="lzh0204" type="application/atom+xml">
@@ -124,11 +130,7 @@
       <div class="subtitle">欢迎来到我的博客~~ </div>
       <div class="link-list">
         
-          <a class="link-btn" target="_blank" rel="noopener" href="https://twitter.com" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
-        
-          <a class="link-btn" target="_blank" rel="noopener" href="https://store.steampowered.com" title="Steam"><i class="fa-brands fa-steam"></i></a>
-        
-          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com" title="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/lzh0204" title="GitHub"><i class="fa-brands fa-github"></i></a>
          
       </div>  
     </div>
@@ -152,12 +154,12 @@
         
             <a class="category-link" href="/categories/Python/">
                 Python
-                <div class="category-count">4</div>
+                <div class="category-count">5</div>
             </a>
         <div class="children"><div class="category-box">
             <a class="category-link" href="/categories/Python/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%BA%93/">
                 数据科学库
-                <div class="category-count">2</div>
+                <div class="category-count">3</div>
             </a>
         
             <a class="category-link" href="/categories/Python/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
@@ -178,6 +180,87 @@
     </div>
     <div id="content-body">
       
+   
+
+
+<article id="post-Matplotlib" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2026/06/12/Matplotlib/">Matplotlib</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2026-06-12T02:50:22.000Z" itemprop="datePublished">2026-06-12</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/Python/">Python</a>><a class="meta-cate-link" href="/categories/Python/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%BA%93/">数据科学库</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.2k 词 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              Matplotlib 是Python中比较常用的可视化数据开源库，他类似于 MATLAB 
+一、关于Matplotlib12plt.rcParams[&#x27;font.sans-serif&#x27;] = [&#x27;SimHei&#x27;]plt.rcParams[&#x27;axes.unicode_minus&#x27;] = False
+
+
+注意：
+Matplotlib 默认不支持中文，在标签或者图例中出现中文时会显示□□□，所以需要通过上面的两段代码解决这个问题 
+
+1、Figure在开始画图之前，我们需要创建一个 Figure 对象，这里的 Figure 相当于一个“画板”，只有有了画板我们才能进行作图
+12import matplotlib.pyplot as pltfig = plt.figure()
+
+2、Axes在创建了 Figure 对象之后，我们还要创建一个 Axes 对象，它相当于一个画布即作图的区域，如果没有创建 Axes 那么系统就按默认的画布大小生成
+1234fig = plt.figure()ax = fig.add_subplot(1...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2026/06/12/Matplotlib/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
    
 
 
@@ -510,6 +593,95 @@ PySpark 的编程模型是数据输入、数据计算和数据输出三大步骤
    
 
 
+<article id="post-JavaScript进阶知识" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2026/02/22/JavaScript%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/">JavaScript进阶知识</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2026-02-21T16:00:00.000Z" itemprop="datePublished">2026-02-22</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            13k 词 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              JavaScript进阶知识1.作用域作用域（scope）规定了变量能够被访问的“范围”，离开这个“范围”变量变不能再被访问
+作用域分为：全局作用域和局部作用域。其中，局部作用域又被分为函数作用域和块作用域
+1.1 局部作用域
+函数作用域：
+
+在函数内部声明的变量只能在函数内部被访问，在不无法直接访问
+1234567&lt;script&gt;	function getSum() &#123;    	//函数内部是函数作用域 是局部作用域    	const num = 10;	&#125;	console.log(num);//此处会报错，函数外部不能使用局部作用域变量&lt;/script&gt;
+
+总结：
+
+函数内部声明的变量,在函数外部无法被访问
+函数的参数也是函数内部的局部变量
+不同函数内部声明的变量无法互相访问
+函数执行完毕后,函数内部的变量实际被清空了
+
+
+块作用域：
+
+在JavaScript中使用{ }包裹的代码称为代码块，代码块内部生命的变量外部将有可能无法被访问
+12345foe(let i = 0;i &lt; 3;i ++ ) &#123;    //i...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2026/02/22/JavaScript%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-BOM的简单学习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -680,95 +852,6 @@ document 对象：
     <a class="right-panel  non-pic  "
       
       href="/2026/02/22/DOM%20&%20%E4%BA%8B%E4%BB%B6/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-JavaScript进阶知识" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2026/02/22/JavaScript%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/">JavaScript进阶知识</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2026-02-21T16:00:00.000Z" itemprop="datePublished">2026-02-22</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            13k 词 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              JavaScript进阶知识1.作用域作用域（scope）规定了变量能够被访问的“范围”，离开这个“范围”变量变不能再被访问
-作用域分为：全局作用域和局部作用域。其中，局部作用域又被分为函数作用域和块作用域
-1.1 局部作用域
-函数作用域：
-
-在函数内部声明的变量只能在函数内部被访问，在不无法直接访问
-1234567&lt;script&gt;	function getSum() &#123;    	//函数内部是函数作用域 是局部作用域    	const num = 10;	&#125;	console.log(num);//此处会报错，函数外部不能使用局部作用域变量&lt;/script&gt;
-
-总结：
-
-函数内部声明的变量,在函数外部无法被访问
-函数的参数也是函数内部的局部变量
-不同函数内部声明的变量无法互相访问
-函数执行完毕后,函数内部的变量实际被清空了
-
-
-块作用域：
-
-在JavaScript中使用{ }包裹的代码称为代码块，代码块内部生命的变量外部将有可能无法被访问
-12345foe(let i = 0;i &lt; 3;i ++ ) &#123;    //i...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2026/02/22/JavaScript%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
