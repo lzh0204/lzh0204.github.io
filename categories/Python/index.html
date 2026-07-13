@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 
 
-<html theme="dark" showBanner="true" hasBanner="false" > 
+<html theme="dark" showBanner="true" hasBanner="false" >
+<head>
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
 <script src="/js/color.global.min.js" ></script>
 <script src="/js/load-settings.js" ></script>
-<head>
   <meta charset="utf-8">
   
   
@@ -34,23 +34,49 @@
     <link rel="alternate" href="/atom.xml" title="lzh0204" type="application/atom+xml">
   
   
-    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
-    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
-    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
-    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
-    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
-    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
-    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
-    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+    <link rel="icon" href="/img/1759059087661.png" type="image/png">
   
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+  
+<link rel="stylesheet" href="/css/custom.css">
 
+
+<meta name="generator" content="Hexo 7.3.0"></head>
 <body>
+  <!-- ====== 入场动画遮罩 ====== -->
+  <div id="entrance-overlay">
+    <div id="entrance-bg"></div>
+    <div id="entrance-content">
+      <h1 id="entrance-text">欢迎来到我的博客</h1>
+    </div>
+    <div id="entrance-hint">点击任意位置进入</div>
+  </div>
+  <script>
+    (function(){
+      var overlay = document.getElementById('entrance-overlay');
+      if (sessionStorage.getItem('entrance-shown')) {
+        overlay.style.display = 'none';
+        return;
+      }
+      overlay.addEventListener('click', function(e) {
+        e.preventDefault();
+        overlay.classList.add('hidden');
+        sessionStorage.setItem('entrance-shown', '1');
+        setTimeout(function(){
+          overlay.style.display = 'none';
+        }, 600);
+      });
+    })();
+  </script>
   
    
+  
+    <a id="back-btn" href="javascript:void(0)" onclick="history.back()" title="返回">
+      <i class="fa-solid fa-arrow-left"></i>
+    </a>
+  
   <div id="main-grid" class="  ">
     <div id="nav" class=""  >
       <navbar id="navbar">
@@ -117,10 +143,14 @@
     </div>
     <div id="sidebar-wrapper">
       <sidebar id="sidebar">
+
+  <div class="sticky" id="home-sticky">
   
     <div class="widget-wrap">
   <div class="info-card">
     <div class="avatar">
+      
+        <img src="/img/IMG_6831.jpg" alt="avatar">
       
       <div class="img-dim"></div>
     </div>
@@ -138,20 +168,14 @@
 </div>
 
   
-  <div class="sticky">
+  
     
-      
 
 
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">分类</h3>
       <div class="category-box">
-            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">
-                前端
-                <div class="category-count">4</div>
-            </a>
-        
             <a class="category-link" href="/categories/Python/">
                 Python
                 <div class="category-count">5</div>
@@ -166,16 +190,22 @@
                 面向对象编程
                 <div class="category-count">1</div>
             </a>
-        </div></div></div>
+        </div></div>
+            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">
+                前端
+                <div class="category-count">4</div>
+            </a>
+        </div>
     </div>
   </div>
 
 
+  
     
-      
 
-    
+  
   </div>
+
 </sidebar>
     </div>
     <div id="content-body">

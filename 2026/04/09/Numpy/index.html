@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 
 
-<html theme="dark" showBanner="true" hasBanner="false" > 
+<html theme="dark" showBanner="true" hasBanner="false" >
+<head>
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
 <script src="/js/color.global.min.js" ></script>
 <script src="/js/load-settings.js" ></script>
-<head>
   <meta charset="utf-8">
   
   
@@ -36,23 +36,49 @@
     <link rel="alternate" href="/atom.xml" title="lzh0204" type="application/atom+xml">
   
   
-    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
-    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
-    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
-    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
-    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
-    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
-    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
-    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+    <link rel="icon" href="/img/1759059087661.png" type="image/png">
   
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+  
+<link rel="stylesheet" href="/css/custom.css">
 
+
+<meta name="generator" content="Hexo 7.3.0"></head>
 <body>
+  <!-- ====== 入场动画遮罩 ====== -->
+  <div id="entrance-overlay">
+    <div id="entrance-bg"></div>
+    <div id="entrance-content">
+      <h1 id="entrance-text">欢迎来到我的博客</h1>
+    </div>
+    <div id="entrance-hint">点击任意位置进入</div>
+  </div>
+  <script>
+    (function(){
+      var overlay = document.getElementById('entrance-overlay');
+      if (sessionStorage.getItem('entrance-shown')) {
+        overlay.style.display = 'none';
+        return;
+      }
+      overlay.addEventListener('click', function(e) {
+        e.preventDefault();
+        overlay.classList.add('hidden');
+        sessionStorage.setItem('entrance-shown', '1');
+        setTimeout(function(){
+          overlay.style.display = 'none';
+        }, 600);
+      });
+    })();
+  </script>
   
    
+  
+    <a id="back-btn" href="javascript:void(0)" onclick="history.back()" title="返回">
+      <i class="fa-solid fa-arrow-left"></i>
+    </a>
+  
   <div id="main-grid" class="  ">
     <div id="nav" class=""  >
       <navbar id="navbar">
@@ -119,65 +145,61 @@
     </div>
     <div id="sidebar-wrapper">
       <sidebar id="sidebar">
+
   
+  
+    <div class="sticky" id="toc-sticky">
     <div class="widget-wrap">
-  <div class="info-card">
-    <div class="avatar">
-      
-      <div class="img-dim"></div>
+      <div class="widget-title toc-fixed-title">目录</div>
+      <div class="widget toc-widget" id="toc-widget">
+        <div class="toc" id="toc-container">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%AE%80%E4%BB%8B"><span class="toc-text">一、简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#NumPy-%E7%9A%84%E4%BD%9C%E7%94%A8%EF%BC%9A"><span class="toc-text">NumPy 的作用：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Ndarray-%E5%AF%B9%E8%B1%A1"><span class="toc-text">二、Ndarray 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E7%89%B9%E7%82%B9"><span class="toc-text">核心特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F"><span class="toc-text">创建方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%A0%E4%B8%AA%E6%AF%94%E8%BE%83%E5%B8%B8%E8%A7%81%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-text">几个比较常见的属性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%B4%A2%E5%BC%95%E5%92%8C%E5%88%87%E7%89%87"><span class="toc-text">三、索引和切片</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">一维数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">二维数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E7%B4%A2%E5%BC%95"><span class="toc-text">高级索引</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97"><span class="toc-text">四、数值计算</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%95%B0%E7%BB%84%E8%BF%90%E7%AE%97"><span class="toc-text">基础数组运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97"><span class="toc-text">算术运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E9%87%8F%E4%B8%8E%E6%95%B0%E7%BB%84%E8%BF%90%E7%AE%97"><span class="toc-text">标量与数组运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%EF%BC%88%E5%B8%83%E5%B0%94%E5%88%A4%E6%96%AD%EF%BC%89"><span class="toc-text">比较运算（布尔判断）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0"><span class="toc-text">高级数学函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%9F%E8%AE%A1%E8%AE%A1%E7%AE%97"><span class="toc-text">统计计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E8%AE%A1%E7%AE%97"><span class="toc-text">线性代数计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6%EF%BC%88%E8%87%AA%E5%8A%A8%E5%AF%B9%E9%BD%90%E8%BF%90%E7%AE%97%EF%BC%89"><span class="toc-text">广播机制（自动对齐运算）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E4%B8%8E%E6%9D%A1%E4%BB%B6%E8%AE%A1%E7%AE%97"><span class="toc-text">聚合与条件计算</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%8E%92%E5%BA%8F"><span class="toc-text">五、排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E5%87%BD%E6%95%B0"><span class="toc-text">排序函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%8D%E5%BA%8F%E6%8E%92%E5%BA%8F"><span class="toc-text">降序排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E8%A1%8C-%E6%8C%89%E5%88%97%E6%8E%92%E5%BA%8F%EF%BC%88%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%EF%BC%89"><span class="toc-text">按行&#x2F;按列排序（二维数组）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E5%88%86%E6%8E%92%E5%BA%8F"><span class="toc-text">部分排序</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%95%B0%E7%BB%84%E7%9A%84%E5%BD%A2%E7%8A%B6%E6%93%8D%E4%BD%9C"><span class="toc-text">六、数组的形状操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#shape-%E6%9F%A5%E7%9C%8B%E6%95%B0%E7%BB%84%E5%BD%A2%E7%8A%B6"><span class="toc-text">.shape 查看数组形状</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reshape-%E6%94%B9%E5%8F%98%E5%BD%A2%E7%8A%B6"><span class="toc-text">.reshape() 改变形状</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%95%E5%B9%B3%E6%95%B0%E7%BB%84%EF%BC%88%E5%A4%9A%E7%BB%B4%E5%8F%98%E4%B8%80%E7%BB%B4%EF%BC%89"><span class="toc-text">展平数组（多维变一维）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#np-expand-dims-%E5%A2%9E%E5%8A%A0%E7%BB%B4%E5%BA%A6"><span class="toc-text">np.expand_dims() 增加维度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#np-squeeze-%E5%8E%8B%E7%BC%A9%E7%BB%B4%E5%BA%A6"><span class="toc-text">np.squeeze() 压缩维度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T-%E6%95%B0%E7%BB%84%E8%BD%AC%E7%BD%AE%EF%BC%88%E8%A1%8C%E5%88%97%E4%BA%92%E6%8D%A2%EF%BC%89"><span class="toc-text">.T 数组转置（行列互换）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%95%B0%E7%BB%84%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0"><span class="toc-text">七、数组生成函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E5%B7%B2%E6%9C%89%E6%95%B0%E6%8D%AE%E5%88%9B%E5%BB%BA"><span class="toc-text">从已有数据创建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#np-array"><span class="toc-text">np.array()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#np-asarray"><span class="toc-text">np.asarray()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BA%E5%AE%9A%E5%BD%A2%E7%8A%B6%E3%80%81%E5%9B%BA%E5%AE%9A%E5%80%BC%E7%9A%84%E6%95%B0%E7%BB%84"><span class="toc-text">固定形状、固定值的数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#np-zeros-shape-%E5%85%A8%E9%9B%B6%E6%95%B0%E7%BB%84"><span class="toc-text">np.zeros(shape) 全零数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#np-ones-shape-%E5%85%A81%E6%95%B0%E7%BB%84"><span class="toc-text">np.ones(shape) 全1数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#np-full-shape-val-%E6%8C%87%E5%AE%9A%E5%80%BC%E5%A1%AB%E5%85%85"><span class="toc-text">np.full(shape,val) 指定值填充</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#np-eye-n-np-identity-n-%E5%8D%95%E4%BD%8D%E7%9F%A9%E9%98%B5%EF%BC%88%E5%AF%B9%E8%A7%92%E7%BA%BF1%EF%BC%8C%E5%85%B6%E4%BD%99%E9%83%BD%E6%98%AF0%EF%BC%89"><span class="toc-text">np.eye(n)&#x2F;np.identity(n) 单位矩阵（对角线1，其余都是0）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#np-empty-shape"><span class="toc-text">np.empty(shape)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E8%8C%83%E5%9B%B4%E3%80%81%E6%AD%A5%E9%95%BF%E7%94%9F%E6%88%90"><span class="toc-text">按范围、步长生成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#np-arange-start-stop-step"><span class="toc-text">np.arange(start,stop,step)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#np-linspace-start-stop-num"><span class="toc-text">np.linspace(start,stop,num)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#np-logspace-start-stop-num"><span class="toc-text">np.logspace(start,stop,num)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%BB%84"><span class="toc-text">随机数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#np-random-rand-shape"><span class="toc-text">np.random.rand(*shape)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#np-random-seed"><span class="toc-text">np.random.seed()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%9D%90%E6%A0%87%E6%95%B0%E7%BB%84"><span class="toc-text">网络坐标数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#np-meshgrid-x-y"><span class="toc-text">np.meshgrid(x,y)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#np-diag"><span class="toc-text">np.diag()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99"><span class="toc-text">八、文件读写</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%EF%BC%88-txt-csv%EF%BC%89"><span class="toc-text">文本文件读写（.txt &#x2F; .csv）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NumPy-%E4%B8%93%E7%94%A8%E6%A0%BC%E5%BC%8F%EF%BC%88-npy-npz%EF%BC%89"><span class="toc-text">NumPy 专用格式（.npy &#x2F; .npz）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#npy-%E5%8D%95%E4%B8%AA%E6%95%B0%E7%BB%84"><span class="toc-text">.npy 单个数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#npz-%E5%A4%9A%E4%B8%AA%E6%95%B0%E7%BB%84"><span class="toc-text">.npz 多个数组</span></a></li></ol></li></ol></li></ol>
+        </div>
+      </div>
     </div>
-    <div class="info">
-      <div class="username">lllzh </div>
-      <div class="dot"></div>
-      <div class="subtitle">欢迎来到我的博客~~ </div>
-      <div class="link-list">
-        
-          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/lzh0204" title="GitHub"><i class="fa-brands fa-github"></i></a>
-         
-      </div>  
     </div>
-  </div>
-</div>
-
+    <script>
+      (function(){
+        var tocLinks = document.querySelectorAll('#toc-container .toc-link');
+        if (!tocLinks.length) return;
+        var headings = [];
+        tocLinks.forEach(function(link) {
+          var href = link.getAttribute('href');
+          if (href && href.startsWith('#')) {
+            var el = document.getElementById(href.slice(1));
+            if (el) headings.push({link: link, el: el});
+          }
+        });
+        if (!headings.length) return;
+        var tocWidget = document.getElementById('toc-widget');
+        function onScroll() {
+          var scrollPos = window.scrollY + 100;
+          var active = null;
+          for (var i = headings.length - 1; i >= 0; i--) {
+            if (headings[i].el.offsetTop <= scrollPos) {
+              active = headings[i];
+              break;
+            }
+          }
+          tocLinks.forEach(function(l) { l.classList.remove('active'); });
+          if (active) {
+            active.link.classList.add('active');
+            if (tocWidget) {
+              var linkTop = active.link.offsetTop;
+              var widgetScroll = tocWidget.scrollTop;
+              var widgetH = tocWidget.clientHeight;
+              if (linkTop < widgetScroll || linkTop > widgetScroll + widgetH - 40) {
+                tocWidget.scrollTop = linkTop - widgetH / 3;
+              }
+            }
+          }
+        }
+        window.addEventListener('scroll', onScroll, {passive: true});
+        onScroll();
+      })();
+    </script>
   
-  <div class="sticky">
-    
-      
 
-
-  <div class="widget-wrap">
-    <div class="widget">
-      <h3 class="widget-title">分类</h3>
-      <div class="category-box">
-            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">
-                前端
-                <div class="category-count">4</div>
-            </a>
-        
-            <a class="category-link" href="/categories/Python/">
-                Python
-                <div class="category-count">5</div>
-            </a>
-        <div class="children"><div class="category-box">
-            <a class="category-link" href="/categories/Python/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%BA%93/">
-                数据科学库
-                <div class="category-count">3</div>
-            </a>
-        
-            <a class="category-link" href="/categories/Python/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
-                面向对象编程
-                <div class="category-count">1</div>
-            </a>
-        </div></div></div>
-    </div>
-  </div>
-
-
-    
-      
-
-    
-  </div>
 </sidebar>
     </div>
     <div id="content-body">

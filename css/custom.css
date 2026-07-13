@@ -1,0 +1,792 @@
+/* ==========================================
+   Custom Style Enhancements for Vivia Theme
+   自定义样式增强
+   ========================================== */
+
+/* ==========================================
+   0. 全站背景图 — 最高优先级覆盖
+   ========================================== */
+/* 修复 style.styl 中 body 规则的 background-blend-mode: overlay
+   和 background-color 把图片搞模糊的问题 */
+body {
+  background: url('/img/IMG_6531.jpg') center/cover no-repeat fixed !important;
+  background-blend-mode: normal !important;
+  background-color: transparent !important;
+}
+
+/* ==========================================
+   1. 入场动画 Entrance Animation
+   ========================================== */
+#entrance-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+  opacity: 1;
+  visibility: visible;
+}
+
+#entrance-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#entrance-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/img/IMG_6531.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+#entrance-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+#entrance-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#entrance-text {
+  font-size: clamp(28px, 5vw, 56px);
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.2);
+  letter-spacing: 2px;
+  animation: entrancePulse 1.8s ease-in-out infinite;
+  user-select: none;
+}
+
+@keyframes entrancePulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+}
+
+#entrance-hint {
+  position: absolute;
+  bottom: 48px;
+  z-index: 1;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  animation: hintBlink 2.4s ease-in-out infinite;
+  user-select: none;
+}
+
+@keyframes hintBlink {
+  0%, 100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ==========================================
+   1.5 首页侧边栏 Sticky
+   ========================================== */
+#home-sticky {
+  position: sticky;
+  top: 96px;
+}
+
+/* ==========================================
+   2. 返回按钮 Back Button
+   ========================================== */
+#back-btn {
+  position: fixed;
+  top: 96px;
+  left: 24px;
+  z-index: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  color: var(--primary);
+  font-size: 18px;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.25s ease,
+              background 0.15s ease-out,
+              color 0.15s ease-out;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  text-decoration: none;
+}
+
+#back-btn:hover {
+  transform: scale(1.12);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+  color: var(--primary);
+  background: var(--card-btn-hover);
+}
+
+#back-btn:active {
+  transform: scale(0.94);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+#back-btn i {
+  transition: transform 0.25s ease;
+}
+
+#back-btn:hover i {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 767px) {
+  #back-btn {
+    top: 88px;
+    left: 12px;
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  #back-btn {
+    top: 92px;
+    left: 16px;
+  }
+}
+
+/* ==========================================
+   3. Vivia 预览站风格对齐
+   ========================================== */
+
+/* 3.1 全局过渡统一 — 对齐 0.15s ease-out */
+:root {
+  --trans-style: 0.15s ease-out;
+}
+
+/* 3.2 卡片阴影减弱 — 扁平化设计 */
+.article-inner {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+}
+
+.article-inner:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10), 0 3px 8px rgba(0, 0, 0, 0.05) !important;
+  transform: translateY(-2px);
+}
+
+/* 移除 #content-body 的 filter（它会破坏 position:fixed） */
+#content-body {
+  filter: none !important;
+}
+
+/* 卡片透明度调低 — 所有卡片用实色背景 */
+.article-inner,
+.article-inner .article-main,
+.widget,
+.info-card,
+.comment-card,
+#footer,
+#page-nav #num-bar,
+.page-nav-btn,
+.archive-main-card,
+.toc-widget {
+  opacity: 1;
+}
+/* 暗色模式下卡片更实 */
+:root[theme='dark'] .article-inner .article-main,
+:root[theme='dark'] .widget,
+:root[theme='dark'] .info-card,
+:root[theme='dark'] .toc-widget {
+  background-color: rgba(26, 34, 43, 0.96);
+}
+
+/* 3.3 侧边栏个人卡片优化 */
+.info-card {
+  overflow: hidden;
+}
+
+/* 移除头像上的 dim 遮罩，让头像清晰显示 */
+.info-card .avatar .img-dim {
+  background: transparent !important;
+}
+
+.info-card .avatar {
+  border-radius: 16px 16px 24px 24px;
+  aspect-ratio: 3/2;
+}
+
+.info-card .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.info-card .avatar:hover img {
+  transform: scale(1.06);
+}
+
+.info-card .username {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  margin-bottom: 6px;
+  margin-top: 4px;
+}
+
+.info-card .subtitle {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-bottom: 14px;
+}
+
+.info-card .dot {
+  width: 32px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 2px;
+  margin: 0 auto 14px auto;
+  transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.info-card:hover .dot {
+  width: 48px;
+}
+
+.info-card .link-btn {
+  width: 42px;
+  height: 42px;
+  font-size: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease,
+              background 0.15s ease-out,
+              color 0.15s ease-out;
+}
+
+.info-card .link-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  color: var(--primary);
+}
+
+@media screen and (min-width: 360px) and (max-width: 1023px) {
+  .info-card .avatar {
+    width: 240px;
+    margin: 24px auto 16px auto;
+    border-radius: 16px;
+  }
+}
+
+/* 3.4 Widget 标题装饰条 */
+.widget-title {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: -0.2px;
+  display: flex;
+  align-items: center;
+}
+
+.widget-title::before {
+  content: '';
+  display: block;
+  height: 14px;
+  width: 4px;
+  border-radius: 2px;
+  background-color: var(--primary);
+  margin-right: 10px;
+  margin-top: 0;
+  margin-left: -4px;
+}
+
+/* 3.5 导航栏优化 */
+#navbar {
+  border-radius: 20px !important;
+  position: sticky;
+  top: 12px;
+  background: var(--nav-glass-bg) !important;
+  opacity: 0.92;
+}
+
+/* 导航栏与内容区间距增大 */
+#main-grid {
+  grid-gap: 24px;
+  padding-top: 8px;
+}
+
+.main-nav-link {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  position: relative;
+}
+
+.main-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 20px;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 1px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.main-nav-link:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.main-nav-link:hover {
+  color: var(--primary) !important;
+  transform: translateY(-1px);
+}
+
+/* 导航栏 Logo 动画 */
+#vivia-logo {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#title-nav a:hover #vivia-logo {
+  transform: rotate(90deg) scale(1.15);
+}
+
+/* ==========================================
+   4. 文章卡片入场动画
+   ========================================== */
+.article {
+  animation: fadeInUp 0.5s ease-out backwards;
+}
+.article:nth-child(1) { animation-delay: 0.06s; }
+.article:nth-child(2) { animation-delay: 0.12s; }
+.article:nth-child(3) { animation-delay: 0.18s; }
+.article:nth-child(4) { animation-delay: 0.24s; }
+.article:nth-child(5) { animation-delay: 0.30s; }
+.article:nth-child(n+6) { animation-delay: 0.36s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================
+   5. 文章内容排版优化
+   ========================================== */
+.article-entry {
+  font-size: 16px;
+  word-break: break-word;
+  line-height: 1.8;
+}
+
+.article-entry h1 {
+  font-size: 1.8em;
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+  padding-bottom: 0.3em;
+  border-bottom: 2px solid var(--neut-L10);
+  letter-spacing: -0.5px;
+}
+
+.article-entry h2 {
+  font-size: 1.5em;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  letter-spacing: -0.3px;
+}
+
+.article-entry h3 {
+  font-size: 1.3em;
+  margin-top: 1.4em;
+  margin-bottom: 0.5em;
+}
+
+.article-entry h1:first-child,
+.article-entry h2:first-child,
+.article-entry h3:first-child {
+  margin-top: 0.4em;
+}
+
+/* Blockquote 引用块 */
+.article-entry blockquote {
+  border-left: 4px solid var(--primary);
+  padding: 12px 24px;
+  border-radius: 8px;
+  position: relative;
+  margin: 1.5em 0;
+  background: var(--blockquote-bg);
+}
+
+/* 内联代码 */
+.article-entry code:not(pre code) {
+  color: var(--primary);
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  background: var(--article-code-bg);
+}
+
+/* 代码块 */
+.article-entry pre {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* 表格 */
+.article-entry table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.article-entry th {
+  background: var(--btn-bg);
+  padding: 10px 16px;
+}
+
+.article-entry td {
+  padding: 8px 16px;
+}
+
+/* ==========================================
+   6. 标签和分类
+   ========================================== */
+.article-tag-list-link,
+.widget-tag-list-link {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.15s ease-out;
+}
+
+.article-tag-list-link:hover,
+.widget-tag-list-link:hover {
+  transform: translateY(-2px);
+}
+
+/* ==========================================
+   7. Widget 间距
+   ========================================== */
+.widget-wrap {
+  margin-bottom: 20px;
+}
+
+/* Category/Tag counts 等宽数字 */
+.category-count,
+.archive-count {
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================
+   8. Footer
+   ========================================== */
+#footer-wrapper {
+  margin-top: 8px;
+}
+
+/* ==========================================
+   9. 分页
+   ========================================== */
+#page-nav .page-number {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+#page-nav .current {
+  font-weight: 800;
+}
+
+/* ==========================================
+   10. 右侧面板（文章卡片箭头）增强
+   ========================================== */
+.right-panel.with-pic .overlay i {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.right-panel.non-pic:hover i {
+  color: var(--primary);
+}
+
+/* ==========================================
+   11. 文章元信息
+   ========================================== */
+.article-header .meta-info-bar {
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+
+/* 评论卡片 */
+.comment-card {
+  margin-top: 16px;
+}
+
+/* ==========================================
+   12. 图片悬停效果
+   ========================================== */
+.article-entry img:not(.no-zoom) {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-entry img:not(.no-zoom):hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================
+   13. 自定义滚动条
+   ========================================== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neut-L30);
+  border-radius: 3px;
+  transition: background 0.15s ease-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neut-L50);
+}
+
+/* 平滑滚动 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ==========================================
+   13.5 文章目录 (TOC) 样式
+   ========================================== */
+
+/* TOC 整体 sticky */
+#toc-sticky {
+  position: sticky;
+  top: 96px;
+}
+
+/* TOC 标题固定在顶部不随内容滚动 */
+.toc-fixed-title {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--card-background);
+  padding: 12px 20px !important;
+  margin: 0 !important;
+  border-radius: 20px 20px 0 0;
+}
+
+/* TOC 内容模块 — 文字在里面滚动 */
+.toc-widget {
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  padding: 12px 16px 16px 20px !important;
+  position: relative;
+  border-radius: 0 0 20px 20px;
+}
+
+/* Widget wrap 去掉间距合并标题和内容 */
+#toc-sticky .widget-wrap {
+  margin-bottom: 0;
+}
+
+/* TOC 内文字滚动，模块不动 */
+#toc-container {
+  position: relative;
+}
+
+/* 文章页内容与 TOC 顶部对齐 */
+#content-body > .article,
+#content-body > article,
+#content-body > .page {
+  margin-top: 0;
+}
+
+.toc-widget::-webkit-scrollbar {
+  width: 4px;
+}
+
+.toc-widget::-webkit-scrollbar-thumb {
+  background: var(--neut-L20);
+  border-radius: 2px;
+}
+
+.toc {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.toc ol,
+.toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc ol {
+  counter-reset: toc-counter;
+}
+
+.toc .toc-item {
+  position: relative;
+  margin: 2px 0;
+}
+
+.toc .toc-link {
+  display: block;
+  padding: 6px 12px 6px 16px;
+  color: var(--neut-L50);
+  text-decoration: none;
+  border-radius: 6px;
+  border-left: 2px solid transparent;
+  transition: color 0.15s ease-out,
+              background 0.15s ease-out,
+              border-color 0.15s ease-out;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.toc .toc-link:hover {
+  color: var(--primary);
+  background: var(--btn-text-hover);
+  border-left-color: var(--primary);
+}
+
+.toc .toc-link:active {
+  background: var(--btn-text-active);
+}
+
+/* 子级目录缩进 */
+.toc .toc-child {
+  margin-left: 16px;
+}
+
+.toc .toc-child .toc-link {
+  font-size: 13px;
+  font-weight: 400;
+  padding-left: 20px;
+}
+
+/* 三级目录进一步缩进 */
+.toc .toc-child .toc-child {
+  margin-left: 12px;
+}
+
+.toc .toc-child .toc-child .toc-link {
+  font-size: 12px;
+  color: var(--neut-L30);
+  padding-left: 24px;
+}
+
+/* 目录当前激活项（滚动高亮） */
+.toc .toc-link.active {
+  color: var(--primary) !important;
+  background: var(--link-hover-bg);
+  border-left-color: var(--primary);
+  font-weight: 600;
+}
+
+/* TOC 滚动高亮 JS */
+.toc-widget {
+  scroll-behavior: smooth;
+}
+
+/* ==========================================
+   14. 选择颜色
+   ========================================== */
+::selection {
+  background-color: var(--selection-bg);
+  color: var(--article-text);
+}
+
+/* ==========================================
+   15. 打印样式
+   ========================================== */
+@media print {
+  #entrance-overlay,
+  #back-btn,
+  #sidebar-wrapper,
+  #nav,
+  #footer-wrapper,
+  .back-to-top-wrapper {
+    display: none !important;
+  }
+  #content-body {
+    grid-column: 1 / -1 !important;
+  }
+  body {
+    background: white !important;
+  }
+  body::before {
+    display: none !important;
+  }
+  #back-btn {
+    position: static !important;
+  }
+}
+
+/* ==========================================
+   16. 减少动画偏好
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  #entrance-overlay {
+    display: none !important;
+  }
+}

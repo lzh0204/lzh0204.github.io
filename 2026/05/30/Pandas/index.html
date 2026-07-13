@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 
 
-<html theme="dark" showBanner="true" hasBanner="false" > 
+<html theme="dark" showBanner="true" hasBanner="false" >
+<head>
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
 <script src="/js/color.global.min.js" ></script>
 <script src="/js/load-settings.js" ></script>
-<head>
   <meta charset="utf-8">
   
   
@@ -52,23 +52,49 @@
     <link rel="alternate" href="/atom.xml" title="lzh0204" type="application/atom+xml">
   
   
-    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
-    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
-    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
-    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
-    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
-    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
-    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
-    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+    <link rel="icon" href="/img/1759059087661.png" type="image/png">
   
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+  
+<link rel="stylesheet" href="/css/custom.css">
 
+
+<meta name="generator" content="Hexo 7.3.0"></head>
 <body>
+  <!-- ====== 入场动画遮罩 ====== -->
+  <div id="entrance-overlay">
+    <div id="entrance-bg"></div>
+    <div id="entrance-content">
+      <h1 id="entrance-text">欢迎来到我的博客</h1>
+    </div>
+    <div id="entrance-hint">点击任意位置进入</div>
+  </div>
+  <script>
+    (function(){
+      var overlay = document.getElementById('entrance-overlay');
+      if (sessionStorage.getItem('entrance-shown')) {
+        overlay.style.display = 'none';
+        return;
+      }
+      overlay.addEventListener('click', function(e) {
+        e.preventDefault();
+        overlay.classList.add('hidden');
+        sessionStorage.setItem('entrance-shown', '1');
+        setTimeout(function(){
+          overlay.style.display = 'none';
+        }, 600);
+      });
+    })();
+  </script>
   
    
+  
+    <a id="back-btn" href="javascript:void(0)" onclick="history.back()" title="返回">
+      <i class="fa-solid fa-arrow-left"></i>
+    </a>
+  
   <div id="main-grid" class="  ">
     <div id="nav" class=""  >
       <navbar id="navbar">
@@ -135,65 +161,61 @@
     </div>
     <div id="sidebar-wrapper">
       <sidebar id="sidebar">
+
   
+  
+    <div class="sticky" id="toc-sticky">
     <div class="widget-wrap">
-  <div class="info-card">
-    <div class="avatar">
-      
-      <div class="img-dim"></div>
+      <div class="widget-title toc-fixed-title">目录</div>
+      <div class="widget toc-widget" id="toc-widget">
+        <div class="toc" id="toc-container">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C"><span class="toc-text">一、基础操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE"><span class="toc-text">创建数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E7%9A%84%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="toc-text">一些基础的查看数据操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%80%89%E6%8B%A9%E4%B8%8E%E8%BF%87%E6%BB%A4"><span class="toc-text">数据选择与过滤</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97"><span class="toc-text">二、数值计算</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%95%B0%E5%80%BC%E8%BF%90%E7%AE%97"><span class="toc-text">基础数值运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%BB%9F%E8%AE%A1%E8%BF%90%E7%AE%97"><span class="toc-text">常用统计运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%83%E7%B4%A0%E7%BA%A7%E4%B8%93%E7%94%A8%E8%BF%90%E7%AE%97"><span class="toc-text">元素级专用运算</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AF%B9%E8%B1%A1%E6%93%8D%E4%BD%9C"><span class="toc-text">三、对象操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAPandas%E5%AF%B9%E8%B1%A1"><span class="toc-text">创建Pandas对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E5%88%A0%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="toc-text">增删改数据</span></a></li></ol></li></ol>
+        </div>
+      </div>
     </div>
-    <div class="info">
-      <div class="username">lllzh </div>
-      <div class="dot"></div>
-      <div class="subtitle">欢迎来到我的博客~~ </div>
-      <div class="link-list">
-        
-          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/lzh0204" title="GitHub"><i class="fa-brands fa-github"></i></a>
-         
-      </div>  
     </div>
-  </div>
-</div>
-
+    <script>
+      (function(){
+        var tocLinks = document.querySelectorAll('#toc-container .toc-link');
+        if (!tocLinks.length) return;
+        var headings = [];
+        tocLinks.forEach(function(link) {
+          var href = link.getAttribute('href');
+          if (href && href.startsWith('#')) {
+            var el = document.getElementById(href.slice(1));
+            if (el) headings.push({link: link, el: el});
+          }
+        });
+        if (!headings.length) return;
+        var tocWidget = document.getElementById('toc-widget');
+        function onScroll() {
+          var scrollPos = window.scrollY + 100;
+          var active = null;
+          for (var i = headings.length - 1; i >= 0; i--) {
+            if (headings[i].el.offsetTop <= scrollPos) {
+              active = headings[i];
+              break;
+            }
+          }
+          tocLinks.forEach(function(l) { l.classList.remove('active'); });
+          if (active) {
+            active.link.classList.add('active');
+            if (tocWidget) {
+              var linkTop = active.link.offsetTop;
+              var widgetScroll = tocWidget.scrollTop;
+              var widgetH = tocWidget.clientHeight;
+              if (linkTop < widgetScroll || linkTop > widgetScroll + widgetH - 40) {
+                tocWidget.scrollTop = linkTop - widgetH / 3;
+              }
+            }
+          }
+        }
+        window.addEventListener('scroll', onScroll, {passive: true});
+        onScroll();
+      })();
+    </script>
   
-  <div class="sticky">
-    
-      
 
-
-  <div class="widget-wrap">
-    <div class="widget">
-      <h3 class="widget-title">分类</h3>
-      <div class="category-box">
-            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">
-                前端
-                <div class="category-count">4</div>
-            </a>
-        
-            <a class="category-link" href="/categories/Python/">
-                Python
-                <div class="category-count">5</div>
-            </a>
-        <div class="children"><div class="category-box">
-            <a class="category-link" href="/categories/Python/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%BA%93/">
-                数据科学库
-                <div class="category-count">3</div>
-            </a>
-        
-            <a class="category-link" href="/categories/Python/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
-                面向对象编程
-                <div class="category-count">1</div>
-            </a>
-        </div></div></div>
-    </div>
-  </div>
-
-
-    
-      
-
-    
-  </div>
 </sidebar>
     </div>
     <div id="content-body">
