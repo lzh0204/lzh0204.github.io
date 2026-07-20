@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="false" >
+<head>
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>线性回归 | lzh0204</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <meta name="description" content="线性回归算法以及数学逻辑推导一、基本概念线性回归模型是通过数据学习得到一个通过自变量的线性组合来预测因变量的函数 二、线性回归模型函数：$$y &#x3D; w_1x^{(1)}+w_2x^{(2)} +…+ w_jx^{(j)}+w_Nx^{(N)}+b$$其中 ，j &#x3D; 1,2,3,…,N，表示每一项影响因素（自变量)，，j &#x3D; 1,2,3,…,N，表示对应的权重 当然，也">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性回归">
+<meta property="og:url" content="https://lzh0204.github.io/2026/07/15/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/index.html">
+<meta property="og:site_name" content="lzh0204">
+<meta property="og:description" content="线性回归算法以及数学逻辑推导一、基本概念线性回归模型是通过数据学习得到一个通过自变量的线性组合来预测因变量的函数 二、线性回归模型函数：$$y &#x3D; w_1x^{(1)}+w_2x^{(2)} +…+ w_jx^{(j)}+w_Nx^{(N)}+b$$其中 ，j &#x3D; 1,2,3,…,N，表示每一项影响因素（自变量)，，j &#x3D; 1,2,3,…,N，表示对应的权重 当然，也">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lzh0204.github.io/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720142120590.png">
+<meta property="og:image" content="https://lzh0204.github.io/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720142245178.png">
+<meta property="og:image" content="https://lzh0204.github.io/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720142526431.png">
+<meta property="og:image" content="https://lzh0204.github.io/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720142646558.png">
+<meta property="og:image" content="https://lzh0204.github.io/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720143425372.png">
+<meta property="og:image" content="https://lzh0204.github.io/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720143633091.png">
+<meta property="og:image" content="https://lzh0204.github.io/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720143748337.png">
+<meta property="og:image" content="https://lzh0204.github.io/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720143807318.png">
+<meta property="og:image" content="https://lzh0204.github.io/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720144800469.png">
+<meta property="og:image" content="https://lzh0204.github.io/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720144820085.png">
+<meta property="og:image" content="https://lzh0204.github.io/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720152020037.png">
+<meta property="og:image" content="https://lzh0204.github.io/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720152028531.png">
+<meta property="og:image" content="https://lzh0204.github.io/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720144945558.png">
+<meta property="og:image" content="https://lzh0204.github.io/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720144955254.png">
+<meta property="og:image" content="https://lzh0204.github.io/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720153530119.png">
+<meta property="article:published_time" content="2026-07-15T09:13:29.000Z">
+<meta property="article:modified_time" content="2026-07-20T08:45:24.606Z">
+<meta property="article:author" content="lzh0204">
+<meta property="article:tag" content="前端开发">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="技术博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lzh0204.github.io/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720142120590.png">
+  
+    <link rel="alternate" href="/atom.xml" title="lzh0204" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/1759059087661.png" type="image/png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+  <!-- ====== 入场动画遮罩 ====== -->
+  <div id="entrance-overlay">
+    <div id="entrance-bg"></div>
+    <div id="entrance-content">
+      <h1 id="entrance-text">欢迎来到我的博客</h1>
+    </div>
+    <div id="entrance-hint">点击任意位置进入</div>
+  </div>
+  <script>
+    (function(){
+      var overlay = document.getElementById('entrance-overlay');
+      if (sessionStorage.getItem('entrance-shown')) {
+        overlay.style.display = 'none';
+        return;
+      }
+      overlay.addEventListener('click', function(e) {
+        e.preventDefault();
+        overlay.classList.add('hidden');
+        sessionStorage.setItem('entrance-shown', '1');
+        setTimeout(function(){
+          overlay.style.display = 'none';
+        }, 600);
+      });
+    })();
+  </script>
+  
+   
+  
+    <a id="back-btn" href="javascript:void(0)" onclick="history.back()" title="返回">
+      <i class="fa-solid fa-arrow-left"></i>
+    </a>
+  
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>lzh0204 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">主页</a>
+    
+      <a class="main-nav-link" href="/archives">归档</a>
+    
+      <a class="main-nav-link" href="/categories/">分类</a>
+    
+      <a class="main-nav-link" href="/about">关于</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS 订阅">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">主页</a>
+    
+      <a class="nav-dropdown-link" href="/archives">归档</a>
+    
+      <a class="nav-dropdown-link" href="/categories/">分类</a>
+    
+      <a class="nav-dropdown-link" href="/about">关于</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS 订阅">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+
+  
+  
+    <div class="sticky" id="toc-sticky">
+    <div class="widget-wrap">
+      <div class="widget-title toc-fixed-title">目录</div>
+      <div class="widget toc-widget" id="toc-widget">
+        <div class="toc" id="toc-container">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%AE%97%E6%B3%95%E4%BB%A5%E5%8F%8A%E6%95%B0%E5%AD%A6%E9%80%BB%E8%BE%91%E6%8E%A8%E5%AF%BC"><span class="toc-text">线性回归算法以及数学逻辑推导</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">一、基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B"><span class="toc-text">二、线性回归模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%9D%87%E6%96%B9%E8%AF%AF%E5%B7%AE%E5%92%8C%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0"><span class="toc-text">三、均方误差和代价函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="toc-text">四、梯度下降</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E4%BB%A3%E7%A0%81"><span class="toc-text">五、代码</span></a></li></ol></li></ol>
+        </div>
+      </div>
+    </div>
+    </div>
+    <script>
+      (function(){
+        var tocLinks = document.querySelectorAll('#toc-container .toc-link');
+        if (!tocLinks.length) return;
+        var headings = [];
+        tocLinks.forEach(function(link) {
+          var href = link.getAttribute('href');
+          if (href && href.startsWith('#')) {
+            var el = document.getElementById(href.slice(1));
+            if (el) headings.push({link: link, el: el});
+          }
+        });
+        if (!headings.length) return;
+        var tocWidget = document.getElementById('toc-widget');
+        function onScroll() {
+          var scrollPos = window.scrollY + 100;
+          var active = null;
+          for (var i = headings.length - 1; i >= 0; i--) {
+            if (headings[i].el.offsetTop <= scrollPos) {
+              active = headings[i];
+              break;
+            }
+          }
+          tocLinks.forEach(function(l) { l.classList.remove('active'); });
+          if (active) {
+            active.link.classList.add('active');
+            if (tocWidget) {
+              var linkTop = active.link.offsetTop;
+              var widgetScroll = tocWidget.scrollTop;
+              var widgetH = tocWidget.clientHeight;
+              if (linkTop < widgetScroll || linkTop > widgetScroll + widgetH - 40) {
+                tocWidget.scrollTop = linkTop - widgetH / 3;
+              }
+            }
+          }
+        }
+        window.addEventListener('scroll', onScroll, {passive: true});
+        onScroll();
+      })();
+    </script>
+  
+
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-线性回归" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        线性回归
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2026-07-15T09:13:29.000Z" itemprop="datePublished">2026-07-15</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/Machine-Learning/">Machine Learning</a>><a class="meta-cate-link" href="/categories/Machine-Learning/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/">监督学习</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.7k 词 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="线性回归算法以及数学逻辑推导"><a href="#线性回归算法以及数学逻辑推导" class="headerlink" title="线性回归算法以及数学逻辑推导"></a>线性回归算法以及数学逻辑推导</h1><h2 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h2><p>线性回归模型是通过数据学习得到一个通过自变量的线性组合来预测因变量的函数</p>
+<h2 id="二、线性回归模型"><a href="#二、线性回归模型" class="headerlink" title="二、线性回归模型"></a>二、线性回归模型</h2><p>函数：<br>$$<br>y &#x3D; w_1x^{(1)}+w_2x^{(2)} +…+ w_jx^{(j)}+w_Nx^{(N)}+b<br>$$<br>其中 <img src="/./%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720142120590.png" alt="image-20260720142120590">，j &#x3D; 1,2,3,…,N，表示每一项影响因素（自变量)，<img src="/./%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720142245178.png" alt="image-20260720142245178">，j &#x3D; 1,2,3,…,N，表示对应的权重</p>
+<p>当然，也可以写成矩阵的形式：<br>$$<br>y &#x3D; wx + b<br>$$<br>其中，向量<img src="/./%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720142526431.png" alt="image-20260720142526431">，向量<img src="/./%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720142646558.png" alt="image-20260720142646558">，表示样本的特征向量</p>
+<h2 id="三、均方误差和代价函数"><a href="#三、均方误差和代价函数" class="headerlink" title="三、均方误差和代价函数"></a>三、均方误差和代价函数</h2><p><strong>均方误差</strong> 是一种误差计算公式：<br>$$<br>MSE &#x3D; \frac{1}{m} \sum_{i &#x3D; 1}^m(\hat y ^ {(i)} - y^{(i)})^2<br>$$<br><strong>代价函数</strong> 是用来衡量整个训练集的平均误差：<br>$$<br>J(w,b) &#x3D; \frac{1}{2m} \sum_{i &#x3D; 1}^m(\hat y ^ {(i)} - y^{(i)})^2<br>$$</p>
+<blockquote>
+<p>除以2 是为了后面求导时把2消掉，方便计算</p>
+</blockquote>
+<p>现在，如果已知数据集 <img src="/./%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720143425372.png">，可以得到线性回归关系 <img src="/./%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720143633091.png" alt="image-20260720143633091">，使得 <img src="/./%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720143748337.png">≈ <img src="/./%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720143807318.png" alt="image-20260720143807318">。</p>
+<blockquote>
+<p><img src="/./%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720144800469.png" alt="image-20260720144800469">是我们预测的值，<img src="/./%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720144820085.png" alt="image-20260720144820085">是对应的真实数据，<img src="/./%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720152020037.png" alt="image-20260720152020037"> &#x3D; <img src="/./%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720152028531.png" alt="image-20260720152028531"></p>
+</blockquote>
+<p>根据上式表明要想 <img src="/./%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720144945558.png" alt="image-20260720144945558">与 <img src="/./%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720144955254.png" alt="image-20260720144955254">之间的误差尽可能的小，就让<strong>均方误差</strong>取最小值，即<br>$$<br>MSE &#x3D; \frac{1}{m} \sum_{i &#x3D; 1}^m(\hat y ^ {(i)} - y^{(i)})^2<br>&#x3D;\frac{1}{m} \sum_{i &#x3D; 1}^m(f(x^{(i)}) - y^{(i)})^2<br>&#x3D;\frac{1}{m} \sum_{i &#x3D; 1}^m(wx^{(i)} + b - y^{(i)})^2<br>$$<br>可以看出均方误差的大小取决于参数 w，b，那么要求w，b，就要用到接下来讲的一个算法</p>
+<h2 id="四、梯度下降"><a href="#四、梯度下降" class="headerlink" title="四、梯度下降"></a>四、梯度下降</h2><p>梯度下降是最小化代价函数的迭代优化算法，用来求最优参数 w，b</p>
+<p><strong>梯度</strong> ：代价函数 <img src="/./%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/image-20260720153530119.png" alt="image-20260720153530119">对参数的偏导数，代表上升最快的方向，要想最小化损失，就往负梯度方向更新迭代</p>
+<ul>
+<li>对 w 求偏导：</li>
+</ul>
+<p>$$<br>\frac{\partial J}{\partial w} &#x3D; \frac{1}{m}\sum_{i&#x3D;1}^m(\hat y^{(i)} - y^{(i)})x^{(i)}<br>$$</p>
+<ul>
+<li>对 b  求偏导：</li>
+</ul>
+<p>$$<br>\frac{\partial J}{\partial b} &#x3D; \frac{1}{m}\sum_{i&#x3D;1}^m(\hat y^{(i)} - y^{(i)})<br>$$</p>
+<p>推导核心思路：$$\frac{\partial}{\partial x} f(g(x)) &#x3D; f’(g(x)) \cdot g’(x)$$</p>
+<p>简单演示一下对 $w$ 求偏导（对 b 同理）</p>
+<p>$$\frac{\partial J}{\partial w} &#x3D; \frac{\partial}{\partial w} \left[ \frac{1}{2m} \sum_{i&#x3D;1}^{m} \left(wx^{(i)} + b - y^{(i)}\right)^2 \right]$$</p>
+<p><strong>Step 1：系数提出来</strong></p>
+<p>$$\frac{\partial J}{\partial w} &#x3D; \frac{1}{2m} \sum_{i&#x3D;1}^{m} \frac{\partial}{\partial w} \left(wx^{(i)} + b - y^{(i)}\right)^2$$</p>
+<p><strong>Step 2：对每个样本用链式法则</strong></p>
+<p>令 $u^{(i)} &#x3D; wx^{(i)} + b - y^{(i)} &#x3D; \hat{y}^{(i)} - y^{(i)}$</p>
+<p>$$\frac{\partial}{\partial w} (u^{(i)})^2 &#x3D; 2u^{(i)} \cdot \frac{\partial u^{(i)}}{\partial w}$$</p>
+<p><strong>Step 3：外层求导</strong></p>
+<p>$$\frac{\partial}{\partial u^{(i)}} (u^{(i)})^2 &#x3D; 2u^{(i)} &#x3D; 2\left(\hat{y}^{(i)} - y^{(i)}\right)$$</p>
+<p><strong>Step 4：内层求导</strong></p>
+<p>$$\frac{\partial u^{(i)}}{\partial w} &#x3D; \frac{\partial}{\partial w} \left(wx^{(i)} + b - y^{(i)}\right) &#x3D; x^{(i)}$$</p>
+<p>（$b$ 和 $y^{(i)}$ 与 $w$ 无关，导数为 $0$）</p>
+<p><strong>Step 5：合并</strong></p>
+<p>$$\frac{\partial}{\partial w} (u^{(i)})^2 &#x3D; 2\left(\hat{y}^{(i)} - y^{(i)}\right) \cdot x^{(i)}$$</p>
+<p><strong>Step 6：代回求和</strong></p>
+<p>$$\frac{\partial J}{\partial w} &#x3D; \frac{1}{2m} \sum_{i&#x3D;1}^{m} 2\left(\hat{y}^{(i)} - y^{(i)}\right) \cdot x^{(i)}$$</p>
+<p><strong>Step 7：系数 2 约掉</strong></p>
+<p>$$\boxed{\frac{\partial J}{\partial w} &#x3D; \frac{1}{m} \sum_{i&#x3D;1}^{m} \left(\hat{y}^{(i)} - y^{(i)}\right) \cdot x^{(i)}}$$</p>
+<p>在求出梯度之后，就可以更新参数了：</p>
+<p><strong>$$w &#x3D; w - α \frac{\partial J}{\partial w}$$</strong></p>
+<p><strong>$$b &#x3D; b - α \frac{\partial J}{\partial b}$$</strong></p>
+<blockquote>
+<p>$$w$$ 和 $$b$$ 必须用更新前的旧值同时计算，不能先更新 $$w$$ 再算 $$b$$</p>
+<p>α：学习率，控制每一步的大小。如果α太大，那么步子太大，震荡不收敛，甚至代价越来越大；如果α太小，下降极慢，训练耗时；实操可以用0.001、0.01、0.1、1试调</p>
+</blockquote>
+<p><strong>收敛判断</strong>：</p>
+<ul>
+<li>迭代达到预设最大次数</li>
+<li>两次迭代的代价函数差值小于极小阈值，认为到达谷底</li>
+</ul>
+<h2 id="五、代码"><a href="#五、代码" class="headerlink" title="五、代码"></a>五、代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">x = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line">y = np.array([<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">11</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进行初始化</span></span><br><span class="line">m = <span class="built_in">len</span>(x)</span><br><span class="line">w = <span class="number">0</span></span><br><span class="line">b = <span class="number">0</span></span><br><span class="line">alpha = <span class="number">0.01</span></span><br><span class="line">tt = <span class="number">1000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(tt):</span><br><span class="line">    y_hat = w * x + b</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 计算梯度</span></span><br><span class="line">    dw = np.mean(x*(y_hat - y))</span><br><span class="line">    db = np.mean(y_hat - y)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 更新参数</span></span><br><span class="line">    w -= alpha * dw</span><br><span class="line">    b -= alpha * db</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;最终参数: w =&quot;</span>, w, <span class="string">&quot;, b =&quot;</span>, b)</span><br></pre></td></tr></table></figure>
+
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2026/06/12/Matplotlib/"
+      title="Matplotlib"
+     >
+
+    <p class="title-text">
+      
+        Matplotlib
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2026 lllzh<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>
