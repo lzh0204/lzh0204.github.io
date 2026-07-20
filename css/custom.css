@@ -778,6 +778,32 @@ html {
 /* ==========================================
    16. 减少动画偏好
    ========================================== */
+/* ==========================================
+   17. MathJax 公式渲染修复
+   ========================================== */
+
+/* 行内公式 — 保持内联，不换行不居中 */
+.article-entry mjx-container[jax="SVG"]:not([display="true"]) {
+  display: inline !important;
+}
+
+/* 块级公式 — 确保居中 */
+.article-entry mjx-container[jax="SVG"][display="true"] {
+  display: block !important;
+  text-align: center !important;
+  margin: 1em 0 !important;
+}
+
+/* 公式容器不溢出 */
+.article-entry mjx-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+/* ==========================================
+   18. 减少动画偏好
+   ========================================== */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

@@ -43,7 +43,119 @@
 <link rel="stylesheet" href="/css/custom.css">
 
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 <body>
   <!-- ====== 入场动画遮罩 ====== -->
   <div id="entrance-overlay">
@@ -249,7 +361,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.7k 词 
+            2.9k 词 
           </div>
         </div>
         
@@ -259,13 +371,29 @@
           <div class="truncate-text">
             
               线性回归算法以及数学逻辑推导一、基本概念线性回归模型是通过数据学习得到一个通过自变量的线性组合来预测因变量的函数
-二、线性回归模型函数：$$y &#x3D; w_1x^{(1)}+w_2x^{(2)} +…+ w_jx^{(j)}+w_Nx^{(N)}+b$$其中 ，j &#x3D; 1,2,3,…,N，表示每一项影响因素（自变量)，，j &#x3D; 1,2,3,…,N，表示对应的权重
-当然，也可以写成矩阵的形式：$$y &#x3D; wx + b$$其中，向量，向量，表示样本的特征向量
-三、均方误差和代价函数均方误差 是一种误差计算公式：$$MSE &#x3D; \frac{1}{m} \sum_{i &#x3D; 1}^m(\hat y ^ {(i)} - y^{(i)})^2$$代价函数 是用来衡量整个训练集的平均误差：$$J(w,b) &#x3D; \frac{1}{2m} \sum_{i &#x3D; 1}^m(\hat y ^ {(i)} - y^{(i)})^2$$
+二、线性回归模型函数：其中 ，j = 1,2,3,…,N，表示每一项影响因素（自变量)，，j = 1,2,3,…,N，表示对应的权重
+当然，也可以写成矩阵的形式：其中，向量 ，向量 ，表示样本的特征向量
+三、均方误差和代价函数均方误差 是一种误差计算公式：代价函数 是用来衡量整个训练集的平均误差：
 
 除以2 是为了后面求导时把2消掉，方便计算
 
-现在，如果已知数据集 ，可以得到线性回归关系 ，使...
+现在，如果已知数据集  ，可以得到线性回归关系   ，使得  。
+
+ 是我们预测的值， 是对应的真实数据，   
+
+根据上式表明要想  与  之间的误差尽可能的小，就让均方误差取最小值，即可以看出均方误差的大小取决于参数 w，b，那么要求w，b，就要用到下面的算法
+四、梯度下降梯度下降是最小化代价函数的迭代优化算法，用来求最优参数 w，b
+梯度 ：代价函数  对参数的偏导数，代表上升最快的方向，要想最小化损失，就往负梯度方向更新迭代
+
+对 w 求偏导：
+
+
+
+对 b  求偏导：
+
+
+推导核心思路：
+简单演示一下对  求偏导（对...
             
           </div>
         
@@ -706,190 +834,6 @@ PySpark 的编程模型是数据输入、数据计算和数据输出三大步骤
    
 
 
-<article id="post-BOM的简单学习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2026/02/22/BOM%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/">BOM的简单学习</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2026-02-21T16:00:00.000Z" itemprop="datePublished">2026-02-22</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            2k 词 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              BOM的简单学习1.什么是BOM？BOM（Browser Object Model）是浏览器对象模型
-浏览器对象模型（BOM）可以使我们通过JS来操作浏览器，在BOM中为我们提供了一组对象，用来完成对浏览器的操作，常见的BOM对象如下：
-
-**Window:**代表的是整个浏览器的窗口,同时window也是网页中的全局对象
-
-Navigator: 代表的当前浏览器的信息,通过该对象可以来识别不同的浏览器
-
-Location: 代表当前浏览器的地址栏信息,通过Location可以获取地址栏信息,或者操作浏览器跳转页面
-
-History: 代表浏览器的历史记录,可以通过该对象来操作浏览器的历史记录,由于隐私原因,该对象不能获取到具体的历史记录,只 能操作浏览器向前或向后翻页,而且该操作只在当次访问时有效
-
-**Screen:**代表用户的屏幕的信息,通过该对象可以获取到用户的显示器的相关的信息
-
-
-2.window对象
-
-window对象是一个全局变量，也可以说是JavaScript中的顶级对象
-像document、alert()、console.log()这些都是window的属性...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2026/02/22/BOM%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-Javascript基础语法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2026/02/22/Javascript%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">JavaScript基础语法</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2026-02-21T16:00:00.000Z" itemprop="datePublished">2026-02-22</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            12k 词 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              JavaScript基础语法1.变量1.1.1变量的理解目标：理解变量是计算机存储数据的“容器”（变量就是一个装东西的盒子）
-
-注意：变量不是数据本身，他们仅仅是一个用于存储数值的容器。可以理解为一个个用来装东西的盒子
-
-1.1.2变量的使用变量的作用是给某一个值或对象标注名称。
-1.变量的声明
-语法：
-使用let关键字声明一个变量
-1let a;
-
-2. let和var的区别
-在较旧的JavaScript,使用关键字 var 来声明变量,而不是let。
-var 现在开发中一般不再使用它,只是我们可能再老版程序中看到它。
- let为了解决 var 的一些问题。
-var声明：
-
-可以先使用 再声明（不合理）
-var声明过的变量可以重复使用（不合理）
-比如变量提升、全局变量、没有块级作用域
-
-结论：var 就是个bug，别迷恋他，以后声明变量统一用let 
-3.变量的赋值：使用 &#x3D; 完成赋值
-1a = 10;
-
-4.声明和赋值同时进行
-1let a = 10;
-
-2.常量使用const声明的变量称为“常量”。当某个变量永远不会改变的时候，就可以使用const来声明，而不是l...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2026/02/22/Javascript%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
 <article id="post-DOM &amp; 事件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -1062,6 +1006,190 @@ document 对象：
     <a class="right-panel  non-pic  "
       
       href="/2026/02/22/JavaScript%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-BOM的简单学习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2026/02/22/BOM%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/">BOM的简单学习</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2026-02-21T16:00:00.000Z" itemprop="datePublished">2026-02-22</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2k 词 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              BOM的简单学习1.什么是BOM？BOM（Browser Object Model）是浏览器对象模型
+浏览器对象模型（BOM）可以使我们通过JS来操作浏览器，在BOM中为我们提供了一组对象，用来完成对浏览器的操作，常见的BOM对象如下：
+
+**Window:**代表的是整个浏览器的窗口,同时window也是网页中的全局对象
+
+Navigator: 代表的当前浏览器的信息,通过该对象可以来识别不同的浏览器
+
+Location: 代表当前浏览器的地址栏信息,通过Location可以获取地址栏信息,或者操作浏览器跳转页面
+
+History: 代表浏览器的历史记录,可以通过该对象来操作浏览器的历史记录,由于隐私原因,该对象不能获取到具体的历史记录,只 能操作浏览器向前或向后翻页,而且该操作只在当次访问时有效
+
+**Screen:**代表用户的屏幕的信息,通过该对象可以获取到用户的显示器的相关的信息
+
+
+2.window对象
+
+window对象是一个全局变量，也可以说是JavaScript中的顶级对象
+像document、alert()、console.log()这些都是window的属性...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2026/02/22/BOM%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-Javascript基础语法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2026/02/22/Javascript%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">JavaScript基础语法</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2026-02-21T16:00:00.000Z" itemprop="datePublished">2026-02-22</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            12k 词 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              JavaScript基础语法1.变量1.1.1变量的理解目标：理解变量是计算机存储数据的“容器”（变量就是一个装东西的盒子）
+
+注意：变量不是数据本身，他们仅仅是一个用于存储数值的容器。可以理解为一个个用来装东西的盒子
+
+1.1.2变量的使用变量的作用是给某一个值或对象标注名称。
+1.变量的声明
+语法：
+使用let关键字声明一个变量
+1let a;
+
+2. let和var的区别
+在较旧的JavaScript,使用关键字 var 来声明变量,而不是let。
+var 现在开发中一般不再使用它,只是我们可能再老版程序中看到它。
+ let为了解决 var 的一些问题。
+var声明：
+
+可以先使用 再声明（不合理）
+var声明过的变量可以重复使用（不合理）
+比如变量提升、全局变量、没有块级作用域
+
+结论：var 就是个bug，别迷恋他，以后声明变量统一用let 
+3.变量的赋值：使用 &#x3D; 完成赋值
+1a = 10;
+
+4.声明和赋值同时进行
+1let a = 10;
+
+2.常量使用const声明的变量称为“常量”。当某个变量永远不会改变的时候，就可以使用const来声明，而不是l...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2026/02/22/Javascript%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
